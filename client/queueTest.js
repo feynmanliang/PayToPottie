@@ -4,5 +4,8 @@ Template.queueTest.helpers({
   }
 });
 
-Template.queueTest.events({
+Template.queueItem.helpers({
+  createdTime: function() {
+    return moment(this.createdAt).format();
+  }
 });

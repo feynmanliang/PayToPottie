@@ -1,3 +1,17 @@
 <template name="queueTest">
-  Test
+  {{#each listReservations}}
+    <ul>
+      {{> queueItem}}
+    </ul>
+  {{/each}}
+</template>
+
+<template name="queueItem">
+  <li>
+    <ul>
+      <li>UserId: {{userId}}</li>
+      <li>createdTime: {{createdTime}}</li>
+      <li>Status: {{status}}</li>
+    </ul>
+  </li>
 </template>
