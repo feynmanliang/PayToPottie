@@ -5,3 +5,10 @@ Router.route('/bathroom/:_id', function() {
         }
     });
 });
+
+Router.route('/gateway',{
+  template: 'gateway',
+  after: function (){
+    Session.set('showRegister', false);
+   }
+});
