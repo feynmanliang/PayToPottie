@@ -4,7 +4,7 @@
   </div>
   <div class="row">
     <div class="owner col-lg-2">{{owner}}</div>
-    <div class="waittime col-lg-10">Wait Time: {{> waittime}}</div>
+    <div class="timeuntilready col-lg-10">{{timeUntilReady}}</div>
   </div>
   <div class="row col-lg-2">
     <div class="btn-group">
@@ -15,11 +15,6 @@
   <div class="row col-lg-10">
     {{> queue}}
   </div>
-</template>
-
-<template name="waittime">
-  <!--TODO: calcualte this-->
-  <span>{{time}} minutes</span>
 </template>
 
 <template name="joinButton">
