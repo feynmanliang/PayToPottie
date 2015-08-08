@@ -4,18 +4,19 @@ if (Meteor.isClient) {
   // counter starts at 0
   Session.setDefault('counter', 0);
 
-  Template.hello.helpers({
-    counter: function () {
-      return Session.get('counter');
-    }
+  this.joined = true;
+  Template.body.helpers({
+      queue: [
+          { user: "User 1"},
+          { user: "User 2"},
+          { user: "User 3"},
+          { user: "User 4"},
+          { user: "User 5"}
+      ]
   });
-
-  Template.hello.events({
-    'click button': function () {
-      // increment the counter when button is clicked
-      Session.set('counter', Session.get('counter') + 1);
-    }
-  });
+  Template.body.heleprs({
+      joined: true
+  })
 }
 
 if (Meteor.isServer) {

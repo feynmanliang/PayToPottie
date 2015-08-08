@@ -2,4 +2,9 @@
 body {
     width: 800px;
     margin: auto;
+    line-height: 1.5;
+}
+
+.description {
+    font-size: 1.2em;
 }
