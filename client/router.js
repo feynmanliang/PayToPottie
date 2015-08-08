@@ -5,3 +5,11 @@ Router.route('/bathroom/:_id', function() {
     }
   });
 });
+
+Router.route('/bathroom', function() {
+    this.render('bathrooms', {
+        data: function() {
+            return Bathrooms.find();
+        }
+    });
+});
