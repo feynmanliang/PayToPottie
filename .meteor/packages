@@ -10,3 +10,4 @@ insecure
 percolate:synced-cron
 twbs:bootstrap
 momentjs:moment
+iron:router
