@@ -8,8 +8,9 @@ SyncedCron.add({
   job: function() {
     var reservationsByCreatedAt =
       Reservations.find({}, { $orderby: { createdAt: -1} });
-    if (reservationsByCreatedAt.length !== 0) {
+    if (reservationsByCreatedAt.count() !== 0) {
       var firstReservation = reservationsByCreatedAt.fetch()[0];
+      console.log("firstReservation " + firstReservation);
       var timeElapsed =
         moment.duration(moment() - moment(firstReservation.createdAt));
 
