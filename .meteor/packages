@@ -8,6 +8,11 @@ meteor-platform
 autopublish
 insecure
 percolate:synced-cron
+accounts-password
+useraccounts:bootstrap
+useraccounts:core
+accounts-base
+accounts-ui
 twbs:bootstrap
 momentjs:moment
 iron:router
