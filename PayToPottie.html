@@ -3,13 +3,28 @@
 </head>
 
 <body>
-  <h1>Welcome to Meteor!</h1>
-
-  {{> hello}}
-  {{> queueTest}}
+    <h1>Pay To Pottie: Bathroom</h1>
+    <div class="row">
+        <div class="description col-lg-12">Description</div>
+    </div>
+    <div class="row">
+        <div class="owner col-lg-4">Owner</div>
+        <div class="waittime col-lg-8">Wait Time: {{> waittime}}</div>
+    </div>
+    
+    <div class="join button">Join</div>
+    <div class="price">$</div>
+    <ul class="queue">
+        {{#each queue}}
+            {{> queueUser}}
+        {{/each}}
+    </ul>
 </body>
 
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
+<template name="waittime">
+  <div>5 min</div>
+</template>
+
+<template name="queueUser">
+    <li>{{user}}</li>
 </template>
