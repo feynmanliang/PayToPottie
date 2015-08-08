@@ -13,3 +13,5 @@ useraccounts:bootstrap
 useraccounts:core
 accounts-base
 accounts-ui
+twbs:bootstrap
+momentjs:moment

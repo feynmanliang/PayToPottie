@@ -3,18 +3,18 @@
 </head>
 
 <body>
-{{> loginButtons}}
-{{> register}}
-<strong>{{#if currentUser}}
-{{> Profile}}
-{{/if}}</strong>
+  {{> loginButtons}}
+  {{> register}}
+  <strong>
+    {{#if currentUser}}
+    {{> Profile}}
+    {{/if}}
+  </strong>
 
-  <h1>Welcome to Meteor!</h1>
-
-  {{> hello}}
-  {{> queueTest}}
-  <div class="uitest">
-</div>
+  <h1>Pay To Pottie: Bathroom</h1>
+  {{#each bathrooms}}
+  {{> bathroom}}
+  {{/each}}
 </body>
 
 <template name="Profile">
