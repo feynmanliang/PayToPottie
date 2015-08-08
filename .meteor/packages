@@ -9,3 +9,4 @@ autopublish
 insecure
 percolate:synced-cron
 twbs:bootstrap
+momentjs:moment
