@@ -4,27 +4,15 @@
   </div>
   <div class="row">
     <div class="owner col-lg-2">{{owner}}</div>
-    <div class="waittime col-lg-10">Wait Time: {{> waittime}}</div>
+    <div class="timeuntilready col-lg-10">{{timeUntilReady}}</div>
   </div>
   <div class="row col-lg-2">
     <div class="btn-group">
-      {{> joinButton}}
+      {{> joinQueue}}
       <button type="button" class="btn btn-default" disabled>$</button>
     </div>
   </div>
   <div class="row col-lg-10">
     {{> queue}}
   </div>
-</template>
-
-<template name="waittime">
-  <!--TODO: calcualte this-->
-  <span>{{time}} minutes</span>
-</template>
-
-<template name="joinButton">
-    <button type="button" class="btn btn-success">
-        {{#if joined}}Join{{/if}}
-        {{#unless joined}}Joined{{/unless}}
-    </button>
 </template>

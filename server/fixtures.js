@@ -15,21 +15,18 @@
         userId: 123,
         bathroomId: bathroomId,
         createdAt: moment().valueOf(),
-        status: "Processing"
       });
 
       Reservations.insert({
         userId: 456,
         bathroomId: bathroomId,
         createdAt: moment().valueOf() + 1000,
-        status: "Active"
       });
 
       Reservations.insert({
         userId: 789,
         bathroomId: bathroomId,
         createdAt: moment().valueOf() + 2000,
-        status: "Active"
       });
     }
   });

@@ -12,14 +12,7 @@
       <li>UserId: {{userId}}</li>
       <li>BathroomId: {{bathroomId}}</li>
       <li>createdTime: {{createdTime}}</li>
-      <li>Status: {{status}}</li>
+      <li>beganProcessingAt: {{beganProcessingTime}}</li>
     </ul>
   </li>
-</template>
-
-<template name="joinQueue">
-    <button type="button" class="btn btn-success">
-        {{#if joined}}Join{{/if}}
-        {{#unless joined}}Joined{{/unless}}
-    </button>
 </template>
