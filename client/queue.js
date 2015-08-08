@@ -1,4 +1,4 @@
-Template.queueTest.helpers({
+Template.queue.helpers({
   listReservations: function() {
     return Reservations.find();
   }
