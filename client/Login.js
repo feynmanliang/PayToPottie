@@ -3,6 +3,10 @@ Template.login.events({
     event.preventDefault();
     var email = $('[name=email]').val();
     var password = $('[name=password]').val();
-    Meteor.loginWithPassword(user, password, [callback])
+    Meteor.loginWithPassword(user, password)
+  },
+  'click .register': function(event){
+    event.preventDefault();
+    Session.set('showRegister', true);
   }
 });
