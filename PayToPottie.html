@@ -9,17 +9,9 @@
 
   <strong>
     {{#if currentUser}}
-    {{> Profile}}
+      Logged in
     {{/if}}
   </strong>
 
   <h1>Pay To Pottie: Bathroom</h1>
-  {{#each bathrooms}}
-  {{> bathroom}}
-  {{/each}}
 </body>
-
-<template name="hello">
-  <button>Click Me</button>
-  <p>You've pressed the button {{counter}} times.</p>
-</template>

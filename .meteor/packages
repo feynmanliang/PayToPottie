@@ -15,3 +15,4 @@ accounts-base
 accounts-ui
 twbs:bootstrap
 momentjs:moment
+iron:router
