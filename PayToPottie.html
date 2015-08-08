@@ -18,21 +18,12 @@
         </div>
     </div>
     <div class="row col-lg-10">
-        <ul class="queue">
-            {{#each queue}}
-                {{> queueUser}}
-            {{/each}}
-        </ul>
+        {{> queue}}
     </div>
-
 </body>
 
 <template name="waittime">
   <span>{{time}} minutes</span>
-</template>
-
-<template name="queueUser">
-    <li>{{user}}</li>
 </template>
 
 <template name="joinButton">

@@ -1,0 +1,17 @@
+<template name="queue">
+  <ul class="queue">
+      {{#each listReservations}}
+          {{> queueItem}}
+      {{/each}}
+  </ul>
+</template>
+
+<template name="queueItem">
+  <li>
+    <ul>
+      <li>UserId: {{userId}}</li>
+      <li>createdTime: {{createdTime}}</li>
+      <li>Status: {{status}}</li>
+    </ul>
+  </li>
+</template>
