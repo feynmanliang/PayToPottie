@@ -7,7 +7,6 @@ SyncedCron.add({
   },
   job: function() {
     var reservationsByCreatedAt = Reservations.find({}, {sort: { createdAt: 1}});
-    console.log(reservationsByCreatedAt.fetch());
     if (reservationsByCreatedAt.count() !== 0) {
       var firstReservation = reservationsByCreatedAt.fetch()[0];
 
