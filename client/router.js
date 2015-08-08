@@ -13,3 +13,10 @@ Router.route('/bathroom', function() {
         }
     });
 });
+
+Router.route('/gateway',{
+  template: 'gateway',
+  after: function (){
+    Session.set('showRegister', false);
+    }
+});

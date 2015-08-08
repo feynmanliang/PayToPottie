@@ -1,0 +1,14 @@
+<template name="gateway">
+<div class="container-fluid">
+  {{#if loggedIn}}
+    {{> homePage}}
+  {{/if}}
+  {{#if showLogin}}
+    {{> login}}
+  {{/if}}
+
+  {{#if showRegister}}
+    {{> register}}
+  {{/if}}
+  </div>
+</template>
