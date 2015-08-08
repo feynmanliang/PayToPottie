@@ -1,6 +1,6 @@
 Template.queue.helpers({
   listReservations: function() {
-    return Reservations.find({}, { $orderby: { createdAt: -1} });
+    return Reservations.find({}, {sort: { createdAt: 1}});
   }
 });
 
