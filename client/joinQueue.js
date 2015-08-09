@@ -23,6 +23,8 @@ Template.joinQueue.events({
     };
     if (canJoin && currBathroom.active) {
       Reservations.insert(newReservation);
+
+      startBathroomCountdown(this._id);
     }
    }
 });

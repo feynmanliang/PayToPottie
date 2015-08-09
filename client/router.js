@@ -1,3 +1,7 @@
+Router.configure({
+    layoutTemplate: 'main'
+});
+
 Router.route('/bathroom/edit/:_id', {
   name: 'bathroomCreate',
   template: 'bathroomCreate',
@@ -38,11 +42,12 @@ Router.route('/bathroom', {
       Meteor.subscribe('reservations'),
       Meteor.subscribe('nearbyBathrooms', loc ? loc.lng : 0.1, loc ? loc.lat : 0.1)
     ];
+  },
+  after: function (){
+    Session.set('logState', "inactive");
+    Session.set('bathroomState', "active");
   }
-});
 
-Router.configure({
-    layoutTemplate: 'main'
 });
 
 Router.route('/imageUpload',{
@@ -52,6 +57,8 @@ Router.route('/imageUpload',{
 Router.route('/',{
   template: 'gateway',
   after: function (){
+    Session.set('logState', "active");
+    Session.set('bathroomState', "inactive");
     Session.set('showRegister', false);
   }
 });
