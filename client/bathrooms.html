@@ -1,9 +1,9 @@
 <template name="bathrooms">
   <div class="row bathroom-container">
-    <div class="col-lg-8 bathroom-map">
+    <div class="col-lg-7 bathroom-map">
       {{> map}}
     </div>
-    <div class="col-lg-4">
+    <div class="col-lg-5">
       {{#each bathroomList}}
         {{> indBathroom}}
       {{/each}}
@@ -13,7 +13,7 @@
 </template>
 
 <template name="indBathroom">
-  <div class="bathroom-locations {{hoveredMarkerStyle}}" id="{{_id}}">
+  <div class="bathroom-locations {{hoveredMarkerStyle}} {{inactiveStyle}}" id="{{_id}}">
     <div class="row">
       <div class="bathroom-order col-lg-2">
         {{rank}}
@@ -26,13 +26,19 @@
         </div>
         <div class="row">
           <div class="bathroom-button col-lg-8">
-            <p class={{hoveredMarkerStyle}}>Available in {{countdown _id}}</p>
-            <p class={{hoveredMarkerStyle}}>Distance: {{distance}}</p>
+            <p class={{hoveredMarkerStyle}}>{{availability}}</p>
+            <p class={{hoveredMarkerStyle}}>Distance: {{miles}} miles</p>
           </div>
           <div class="col-lg-1">
-            <button type="button" class="btn btn-default getDirections" id="{{_id}}">
-              Directions
-            </button>
+            {{#if active}}
+              <button type="button" class="btn btn-default getDirections" id="{{_id}}">
+                Directions
+              </button>
+            {{else}}
+              <button type="button" class="btn btn-default" disabled>
+                In Maintenance
+              </button>
+            {{/if}}
           </div>
         </div>
       </div>
