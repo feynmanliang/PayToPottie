@@ -1,0 +1,18 @@
+<template name="main">
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <h2> PayToPottie </h2> potty with us
+        {{#if loggedIn}}
+          {{> logoutButton}}
+        {{/if}}
+        {{#if loggedOut}}
+          {{> loginButton}}
+        {{/if}}
+
+      </div>
+    </div>
+  </nav>
+
+  {{> yield}}
+</template>
