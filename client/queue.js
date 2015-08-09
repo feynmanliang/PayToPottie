@@ -20,7 +20,10 @@ Template.queueItem.helpers({
 
 Template.queueItem.events({
   "click .remove-queue-item": function(event) {
-    if (this.bathroomId.owner === Meteor.userId()){
+    var reservation = Reservations.findOne(event.target.id);
+    console.log(reservation);
+    if (this.bathroomId.owner === Meteor.userId()
+        || reservation.userId === Meteor.userId()){
       Reservations.remove(event.target.id);
     }
   }
