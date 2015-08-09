@@ -42,7 +42,6 @@ Template.indBathroom.helpers({
     return (0.621371 * this.distance / 1000).toFixed(2);
   },
   inactiveStyle: function() {
-    console.log(this.active)
     if (!this.active) {
       return "bg-danger";
     } else {

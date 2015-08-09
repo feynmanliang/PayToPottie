@@ -23,3 +23,16 @@ Template.bathroom.helpers({
     }
   }
 });
+
+Template.bathroom.onRendered(function() {
+  Tracker.autorun(function() {
+    var queue = Reservations
+      .find({bathroomId: this.data._id}, {sort: { createdAt: 1}})
+      .map(function(reservation) { return reservation.userId; });
+    var position = queue.indexOf(Meteor.userId());
+
+    if (position === 0) {
+      Router.go("bathroom.inUse", { _id: this.data._id });
+    }
+  }.bind(this));
+});

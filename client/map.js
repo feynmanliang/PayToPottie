@@ -65,7 +65,6 @@ Template.map.onCreated(function() {
         bathrooms: bathrooms,
         matrix: res
       });
-      console.log("Set distanceMatrix", JSON.stringify(res));
     });
   });
 });
