@@ -1,3 +1,7 @@
+Router.route('/bathroom/new', function() {
+  this.render('bathroomCreate')
+});
+
 Router.route('/bathroom/:_id', function() {
   this.render('bathroom', {
     data: function() {
