@@ -7,28 +7,27 @@
       <div class="row">
         <div class="col-lg-12">
           <p class="toiletName text-center">You are going to:</p>
-          <h4 class="toiletName text-center">{{name}}</h4>
-        </div>
-      </div>
-      <div class="row center-block">
-        <div class="col-lg-10">
+          <h1 class="toiletName text-center">{{name}}</h1>
           {{#if inQueue}}
             <div class="timeuntilready progress">
               {{> countdown}}
             </div>
           {{else}}
-            <div class="timeuntilready">
-              Estimated Wait: {{countdown _id}}
+            <div class="timeuntilready text-center">
+              Estimated Wait:
+              <h2 class="countdown">{{countdown _id}}</h2>
             </div>
           {{/if}}
         </div>
       </div>
-      <div class="row">
-        <div class="center-block text-center col-lg-12">
-          <p>{{positionInQueue}}</p>
-          {{> joinQueue}}
+      {{#if currentUser}}
+        <div class="row">
+          <div class="center-block text-center col-lg-12">
+            <p>{{positionInQueue}}</p>
+            {{> joinQueue}}
+          </div>
         </div>
-      </div>
+      {{/if}}
     </div>
   </div>
 </template>

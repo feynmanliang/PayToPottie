@@ -25,7 +25,7 @@ Template.inUse.helpers({
 
 Template.inUse.events({
   'click .finished': function() {
-    var res = Reservations.find({
+    var res = Reservations.findOne({
       bathroomId: this._id,
       userId: Meteor.userId()
     });
@@ -40,9 +40,14 @@ Template.inUse.onRendered(function() {
     startBathroomCountdown(this.data._id);
   }
 
+
   Tracker.autorun(function() {
-    if (!this.data) {
-      Router.go('thankYou', { _id: bathroom._id })
+    var res = Reservations.findOne({
+      bathroomId: this.data._id,
+      userId: Meteor.userId()
+    });
+    if (!res) {
+      Router.go('thankYou', { _id: this.data._id })
     }
-  });
+  }.bind(this));
 });
