@@ -30,7 +30,7 @@ Template.bathrooms.events({
 
 Template.indBathroom.helpers({
   hoveredMarkerStyle: function() {
-    return Session.equals('hoveredMarker', this._id) ? 'active' : '';
+    return Session.equals('hoveredMarker', this._id) ? 'bg-primary' : '';
   }
 });
 
