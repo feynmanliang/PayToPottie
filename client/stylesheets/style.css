@@ -25,8 +25,12 @@ html, body {
 
 .paragraph-frame {
   height: 700px;
-  width: 700px;
+  width: 50%;
+  margin-left: 5%;
+}
 
+.paragraph-box {
+  background-color: rgba(255, 255, 255, 0.8);
 }
 
 .header-hyper {
@@ -44,6 +48,8 @@ html, body {
 .about-container {
   position: absolute;
   top: 0px;
+  text-align: center;
+  margin-left: 15%;
 }
 
 
