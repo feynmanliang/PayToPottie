@@ -1,10 +1,10 @@
 <template name="main">
-<ul class="nav nav-tabs">
+<ul class="nav nav-pills nav-justified">
   <li role="presentation">
-        <h2> PayToPottie </h2> potty with us
+        <a><h2> PayToPottie </h2> potty with us</a>
   </li>
 
-  <li role="presentation" id="bathroom-list"><a href="/bathroom">Bathrooms</a></li>
+  <li role="presentation" id="bathroom-list"><a href="/bathroom"><h2>Bathrooms</h2></a></li>
   <li role="presentation" id="log-buttons">
         {{#if loggedIn}}
           {{> logoutButton}}
