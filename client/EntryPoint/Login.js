@@ -6,6 +6,7 @@ Template.login.events({
     Meteor.logoutOtherClients();
     Meteor.loginWithPassword(email, password, function(error){
       if (error) {
+        Session.set('loginError',true);
         throw Error(error);
       } else {
       Router.go('/bathroom');
@@ -18,3 +19,10 @@ Template.login.events({
     Session.set('showRegister', true);
   }
 });
+
+Template.login.helpers({
+  loginErr: function() {
+    return Session.get('loginError');
+  }
+});
+
