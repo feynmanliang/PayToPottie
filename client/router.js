@@ -124,6 +124,7 @@ Router.route('/profile',{
 Router.route('/',{
   template: 'gateway',
   after: function (){
+    Session.set('loginError', false);
     Session.set('userProf', "inactive");
     Session.set('logState', "active");
     Session.set('bathroomState', "inactive");
