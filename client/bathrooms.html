@@ -1,5 +1,5 @@
 <template name="bathrooms">
-    <table class="table-bordered">
+    <table class="table table-bordered">
         <thead>
             <tr>
                 <th>Wait Time</th>
@@ -16,10 +16,12 @@
     </table>
     {{> map}}
 </template>
+
 <template name="indBathroom">
-    <tr>
+    <tr class="{{selectedMarkerStyle}}">
         <td>
-            <a href="/bathroom/{{_id}}">Click</a>{{timeUntilReady _id}}</td>
+          <a href="/bathroom/{{_id}}">Click</a>{{timeUntilReady _id}}
+        </td>
         <td>{{name}}</td>
         <td>{{owner}}</td>
         <td><button>{{> joinQueue}}</button></td>

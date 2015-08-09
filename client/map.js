@@ -25,13 +25,11 @@ Template.map.onCreated(function() {
   var self = this;
 
   GoogleMaps.ready('map', function(map) {
-    google.maps.event.addListener(map.instance, 'click', function(event) {
-    });
-
-    // Create new markers reactively
-    self.autorun(function() {
-      Bathrooms.find().forEach(function(bathroom) {
-        new google.maps.Marker({
+    // Bind markers reactively to Bathrooms
+    Bathrooms.find().observe({
+      added: function(bathroom) {
+        // Create marker
+        var marker = new google.maps.Marker({
           animation: google.maps.Animation.DROP,
           draggable: false,
           map: map.instance,
@@ -41,36 +39,26 @@ Template.map.onCreated(function() {
           ),
           id: bathroom._id
         });
-      });
+
+        // Handle marker clicking
+        google.maps.event.addListener(marker, 'click', function(event) {
+          Session.set('selectedMarker', bathroom._id);
+        });
+      },
+      changed: function(newBathroom, oldBathroom) {
+        markers[newBathroom._id].setPosition({
+          lat: newBathroom.loc.coordinates[1],
+          lng: newBathroom.loc.coordinates[0]
+        });
+      },
+      removed: function(oldBathroom) {
+        // Remove the marker from the map
+        markers[oldBathroom._id].setMap(null);
+
+        // Clear the event listener
+        google.maps.event.clearInstanceListeners(
+          markers[oldBathroom._id]);
+      }
     });
   });
 });
-
-//Bathrooms.find().observe({
-//    // TODO: handle marker clicked
-//    //// This listener lets us drag markers on the map and update their corresponding bathroom.
-//    //google.maps.event.addListener(marker, 'dragend', function(event) {
-//    //  Markers.update(marker.id, { $set: { lat: event.latLng.lat(), lng: event.latLng.lng() }});
-//    //});
-
-//    // Store this marker instance within the markers object.
-//    markers[bathroom._id] = marker;
-//  },
-//  changed: function(newBathroom, oldBathroom) {
-//    markers[newBathroom._id].setPosition({
-//      lat: newBathroom.loc.coordinates[1],
-//      lng: newBathroom.loc.coordinates[0]
-//    });
-//  },
-//  removed: function(oldBathroom) {
-//    // Remove the marker from the map
-//    markers[oldBathroom._id].setMap(null);
-
-//    // Clear the event listener
-//    google.maps.event.clearInstanceListeners(
-//      markers[oldBathroom._id]);
-
-//    // Remove the reference to this marker instance
-//    delete markers[oldBathroom._id];
-//  }
-//});
