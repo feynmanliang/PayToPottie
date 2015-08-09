@@ -6,11 +6,11 @@ if (Meteor.isServer) {
 // TODO: only publish images for current bathroom
 BathroomImages = new FileCollection('bathroomImages', {
   resumable: true,   // Enable built-in resumable.js upload support
-  http: [{ 
+  http: [{
     method: 'get',
-    path: '/:md5',  // this will be at route "/gridfs/myFiles/:md5"
+    path: '/:md5',  // this will be at route "/gridfs/bathroomImages/:md5"
     lookup: function (params, query) {  // uses express style url params
-      return { md5: params.md5 };       // a query mapping url to myFiles
+      return { md5: params.md5 };       // a query mapping url to bathroomImages
     }
   }]
 });

@@ -1,4 +1,3 @@
-// TODO: implement after user accounts
 Meteor.startup(function() {
   // Allow rules for security. Should look familiar!
   // Without these, no file writes would be allowed
@@ -13,8 +12,7 @@ Meteor.startup(function() {
     // Only owners can remove a file
     remove: function (userId, file) {
       // Only owners can delete
-      // return (userId === file.metadata.owner);
-      return true;
+      return (userId === file.metadata.owner);
     },
     // Anyone can retrieve a file via HTTP GET
     read: function (userId, file) {
