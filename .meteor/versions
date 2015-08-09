@@ -5,6 +5,7 @@ accounts-ui-unstyled@1.1.7
 autopublish@1.0.3
 autoupdate@1.2.1
 base64@1.0.3
+benjaminrh:jquery-cookie@0.1.0
 binary-heap@1.0.3
 blaze@2.1.2
 blaze-tools@1.0.3
@@ -71,5 +72,6 @@ ui@1.0.6
 underscore@1.0.3
 url@1.0.4
 useraccounts:core@1.12.0
+vsivsi:file-collection@1.2.0
 webapp@1.2.0
 webapp-hashing@1.0.3

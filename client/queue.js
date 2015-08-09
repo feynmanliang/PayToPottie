@@ -16,3 +16,11 @@ Template.queueItem.helpers({
     }
   }
 });
+
+
+Template.queueItem.events({
+  "click .remove-queue-item": function(event) {
+    // console.log(event.target.id);
+    Reservations.remove(event.target.id);
+  }
+})

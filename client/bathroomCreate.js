@@ -6,7 +6,7 @@ Template.bathroomCreate.events({
     var owner = Meteor.userId() || undefined;
     var geocode = new google.maps.Geocoder();
     geocode.geocode({
-      address: bathroom.location.value
+      address: bathroom.address.value
     }, function(geocodeResult) {
 
       if(geocodeResult.length === 0) // user didn't input location information
@@ -20,7 +20,8 @@ Template.bathroomCreate.events({
         description: bathroom.description.value,
         price: parseInt(bathroom.price.value),
         owner: owner,
-        address: bathroom.location.value,
+        address: bathroom.address.value,
+        active: bathroom.active.checked,
         loc: {
           type : "Point",
           coordinates : [
@@ -31,11 +32,15 @@ Template.bathroomCreate.events({
       }
       // if window.location is something like /bathroom/edit, then
       //  update, instead of insert
-      if(window.location.pathname.indexOf('/bathroom/edit') > -1)
-        var bathroomId = Bathrooms.update(bathroomToSave);
+      if(this._id !== undefined)
+        var bathroomId = Bathrooms.update({_id: this._id}, bathroomToSave);
       else
         var bathroomId = Bathrooms.insert(bathroomToSave);
       Router.go('/bathroom/' + bathroomId);
     });
   }
-})
+});
+
+Template.bathroomCreate.isNew = function(id) {
+  return id === null;
+}

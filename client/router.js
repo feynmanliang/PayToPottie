@@ -32,3 +32,7 @@ Router.route('/gateway',{
 Router.configure({
     layoutTemplate: 'main'
 });
+
+Router.route('/imageUpload',{
+  template: 'imageUpload'
+});

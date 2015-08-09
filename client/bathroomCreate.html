@@ -5,8 +5,8 @@
       <input type="text" class="form-control" id="name" placeholder="name" value="{{name}}">
     </div>
     <div class="form-group">
-      <label for="location">Location:</label>
-      <input type="text" class="form-control" id="location" placeholder="location" value="{{location}}">
+      <label for="address">Address:</label>
+      <input type="text" class="form-control" id="address" placeholder="address" value="{{address}}">
     </div>
     <div class="form-group">
       <label for="description">Description:</label>
@@ -16,6 +16,17 @@
       <label for="price">Price:</label>
       <input type="text" class="form-control" id="price" placeholder="price" value="{{price}}">
     </div>
-    <button type="submit" class="btn btn-success createBathroom">Create</button>
+    <div class="form-group">
+      <label>Active:
+        <input type="checkbox" id="active" placeholder="active" checked="{{#unless active}}false {{else}} true{{/unless}}">
+      </label>
+    </div>
+    <button type="submit" class="btn btn-success createBathroom">
+      {{#if isNew _id}}
+        Create
+      {{else}}
+        Update
+      {{/if}}
+    </button>
   </form>
 </template>
