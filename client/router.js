@@ -37,12 +37,13 @@ Router.route('/bathroom', {
   name: 'bathrooms',
   template: 'bathrooms',
   subscriptions: function() {
-    // TODO: support maxDistance
-    var loc = Geolocation.latLng();
+    var loc = Location.getReactivePosition();
 
     return [
       Meteor.subscribe('reservations'),
-      Meteor.subscribe('nearbyBathrooms', loc ? loc.lng : 0.1, loc ? loc.lat : 0.1)
+      loc ?
+        Meteor.subscribe('nearbyBathrooms', loc.longitude, loc.latitude) :
+        undefined
     ];
   },
   after: function (){

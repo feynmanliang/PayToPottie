@@ -2,8 +2,8 @@ Template.bathrooms.helpers({
   bathroomList: function() {
     var distances = Session.get('distanceMatrix');
     if (distances) {
-      var bathroomsWithDistances = Bathrooms.find({}, {limit: 10}).map(function(elem, i) {
-        elem.distance = distances.rows[0].elements[i].distance.value;
+      var bathroomsWithDistances = _.map(distances.bathrooms, function(elem, i) {
+        elem.distance = distances.matrix.rows[0].elements[i].distance.value;
         return elem
       });
       console.log(_.sortBy(bathroomsWithDistances, function(elem) {

@@ -43,6 +43,20 @@
         },
         active: false
       });
+      var bathroomId4 = Bathrooms.insert({
+        name: "Super far bathroom",
+        description: "consipated",
+        price: 0.50,
+        owner: 12,
+        loc: {
+          type : "Point",
+          coordinates : [
+            0.1,
+            0.1
+          ]
+        },
+        active: false
+      });
     }
     if (Reservations.find().count() === 0) {
       Reservations.insert({

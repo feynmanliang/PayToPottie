@@ -30,6 +30,7 @@ Template.map.onCreated(function() {
   var self = this;
 
   GoogleMaps.ready('map', function(map) {
+    var bathrooms = [];
     var destinations = [];
     Bathrooms.find({}, {limit: 10}).forEach(function(bathroom) {
       // Create marker
@@ -59,6 +60,7 @@ Template.map.onCreated(function() {
           bathroom.loc.coordinates[1],
           bathroom.loc.coordinates[0])
       );
+      bathrooms.push(bathroom);
     });
     var pos = Location.getLastPosition();
     var origin = new google.maps.LatLng(pos.latitude, pos.longitude);
@@ -68,7 +70,10 @@ Template.map.onCreated(function() {
       destinations: destinations,
       travelMode: google.maps.TravelMode.WALKING
     }, function(res) {
-      Session.set("distanceMatrix", res);
+      Session.set("distanceMatrix", {
+        bathrooms: bathrooms,
+        matrix: res
+      });
       console.log("Set distanceMatrix", JSON.stringify(res));
     });
   });

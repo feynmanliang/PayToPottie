@@ -5,7 +5,12 @@ Meteor.startup(function() {
       console.log("Got invalid lat long, returning all bathrooms");
       return Bathrooms.find();
     }
-    return Bathrooms.find({ "loc.coordinates" : { $near : [lon, lat] } });
+    return Bathrooms.find({
+      "loc.coordinates" : {
+        $near : [lon, lat],
+        $maxDistance: 10
+      }
+    });
   });
 
   Meteor.publish('bathroom', function(bathroomId) {
