@@ -5,8 +5,15 @@
     <a href="/bathroom" class="btn btn-default col-lg-1">Return</a>
   </div>
   <div class="row">
-    <div class="owner col-lg-2">Owner: {{owner}}</div>
-    <div class="timeuntilready col-lg-10">Wait: {{timeUntilReady _id}}</div>
+    <div class="owner col-lg-2">
+      <p>Owner: {{owner}}</p>
+      <p>{{positionInQueue}} / {{queueLength}}</p>
+    </div>
+    <div class="timeuntilready progress col-lg-10">
+      <div class="progress-bar" role="progressbar" style="width: {{percentSinceLoad}};">
+        {{countdown _id}}
+      </div>
+    </div>
   </div>
   <div class="row col-lg-2">
     {{> joinQueue}}

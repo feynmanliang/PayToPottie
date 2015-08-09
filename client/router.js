@@ -32,9 +32,11 @@ Router.route('/bathroom', {
   template: 'bathrooms',
   subscriptions: function() {
     // TODO: support maxDistance
+    var loc = Geolocation.latLng();
+
     return [
       Meteor.subscribe('reservations'),
-      Meteor.subscribe('nearbyBathrooms', 0.1, 0.2)
+      Meteor.subscribe('nearbyBathrooms', loc ? loc.lng : 0.1, loc ? loc.lat : 0.1)
     ];
   }
 });

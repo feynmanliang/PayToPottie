@@ -26,13 +26,13 @@
     <tr class="{{selectedMarkerStyle}} bathroom-item" id="{{_id}}">
       <div class="panel panel-default">
         <div class="panel-heading">
-            {{_id}}
-            {{timeUntilReady _id}}
+            {{countdown _id}}
             {{> joinQueue}}
         </div>
         <div id="collapse-{{_id}}" class="panel-collapse collapse" role="tabpanel">
           <div class="panel-body">
-            Panel Body
+            <td><a href="/bathroom/{{_id}}">{{name}}</a></td>
+            <td>{{owner}}</td>
           </div>
         </div>
       </div>
