@@ -2,7 +2,8 @@ Meteor.startup(function() {
   // TODO: Make bathroom list only show first 10 nearby bathrooms
   Meteor.publish('nearbyBathrooms', function(lon, lat) {
     if (!lon && !lat) {
-      return Bathrooms.find().limit(10);
+      console.log("Got invalid lat long, returning all bathrooms");
+      return Bathrooms.find();
     }
     return Bathrooms.find({ "loc.coordinates" : { $near : [lon, lat] } });
   });

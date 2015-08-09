@@ -1,6 +1,5 @@
 Template.bathrooms.helpers({
   bathroomList: function() {
-    var loc = Geolocation.latLng();
     return Bathrooms.find();
   },
 });
@@ -14,5 +13,10 @@ Template.bathrooms.events({
 Template.indBathroom.helpers({
   selectedMarkerStyle: function() {
     return  Session.equals('selectedMarker', this._id) ? 'active' : '';
-  }
+  },
 });
+
+Template.indBathroom.onRendered(function() {
+  startBathroomCountdown(this.data._id)
+});
+
