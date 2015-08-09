@@ -17,6 +17,7 @@ BathroomImages = new FileCollection('bathroomImages', {
 
 CRON_INTERVAL = 'every 5 seconds';
 BATHROOM_TIME_SECONDS = 10;
+COUNTDOWN_TIME_MILLIS = 200;
 
 // TODO: make this a pub-sub so bathrooms that are added are reactively updated
 

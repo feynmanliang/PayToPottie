@@ -8,6 +8,11 @@
     <div class="owner col-lg-2">Owner: {{owner}}</div>
     <div class="timeuntilready col-lg-10">Wait: {{countdown _id}}</div>
   </div>
+  <div class="row progress">
+    <div class="progress-bar" role="progressbar" style="width: {{percentSinceLoad}};">
+      {{percentSinceLoad}}
+    </div>
+  </div>
   <div class="row col-lg-2">
     {{> joinQueue}}
   </div>
