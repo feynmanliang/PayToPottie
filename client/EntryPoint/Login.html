@@ -1,14 +1,15 @@
 <template name="login">
-  <h2>Login</h2>
-  <form class="login">
-    <p>Email: <input type="email" name="email"></p>
-    <p>Password: <input type="password" name="password"></p>
-    <input type="submit">
-  </form>
+  <div class="login-elt">
+    <h2>Login</h2>
+    <form class="login">
+      <p>Email: <input name="email" class="form-control input-lg" type="text" placeholder=".input-lg"></p>
+      <p>Password: <input name="password" class="form-control input-lg" type="text" placeholder=".input-lg"></p>
+      <input class="btn btn-default" type="submit" value="Submit">
+      <input class="btn btn-default register" type="submit" value="Register">
 
-  <button class="register">
-    go register
-  </button>
+    </form>
+ </div>
+
   {{#if showRegister}}
     {{> register}}
   {{/if}}
