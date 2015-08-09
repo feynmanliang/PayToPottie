@@ -1,28 +1,40 @@
 <template name="bathrooms">
   <button class="btn btn-success addBathroom">Add Bathroom</button>
-    <table class="table">
-        <thead>
-            <tr>
-                <th>Wait Time</th>
-                <th>Name</th>
-                <th>Owner</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody>
-          {{#each bathroomList}}
-            {{> indBathroom}}
-          {{/each}}
-        </tbody>
-    </table>
-    {{> map}}
+  <div class="row">
+    <div class="col-lg-2">
+      <table class="table">
+          <thead>
+              <tr>
+                  <th>Wait Time</th>
+                  <th></th>
+              </tr>
+          </thead>
+          <tbody>
+            {{#each bathroomList}}
+              {{> indBathroom}}
+            {{/each}}
+          </tbody>
+      </table>
+    </div>
+    <div class="col-lg-10">
+      {{> map}}
+    </div>
+  </div>
 </template>
 
 <template name="indBathroom">
-    <tr class="{{selectedMarkerStyle}}">
-        <td>{{timeUntilReady _id}}</td>
-        <td><a href="/bathroom/{{_id}}">{{name}}</a></td>
-        <td>{{owner}}</td>
-        <td>{{> joinQueue}}</td>
+    <tr class="{{selectedMarkerStyle}} bathroom-item" id="{{_id}}">
+      <div class="panel panel-default">
+        <div class="panel-heading">
+            {{_id}}
+            {{timeUntilReady _id}}
+            {{> joinQueue}}
+        </div>
+        <div id="collapse-{{_id}}" class="panel-collapse collapse" role="tabpanel">
+          <div class="panel-body">
+            Panel Body
+          </div>
+        </div>
+      </div>
     </tr>
 </template>
