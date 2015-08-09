@@ -18,7 +18,7 @@
     <div class="bathroom-item row" id="{{_id}}">
       <div class="bathroom-panel">
         <div class="bathroom-panel-header {{hovereMarkerStyle}}">
-          <div class="row ">
+          <div class="row">
             <div class="col-lg-2">{{countdown _id}}</div>
             <div class="col-lg-6">{{name}}</div>
             <div class="col-lg-4">{{> joinQueue}}</div>
@@ -26,6 +26,7 @@
         </div>
         <div id="collapse-{{_id}}" class="panel-collapse collapse" role="tabpanel">
           <div class="bathroom-panel-body">
+            <a href="/bathroom/{{_id}}">More...</a>
             {{> queue}}
           </div>
         </div>

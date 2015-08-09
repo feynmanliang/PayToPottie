@@ -31,7 +31,8 @@ body {
 .bathroom-item {
    margin-right: -30px;
    border-top: 1px solid #777;
-   border-collapse: collapse;
+   border-bottom: 1px solid #777;
+   margin-top: -1px;
 }
 .bathroom-panel {
   width: 100%;
@@ -52,4 +53,11 @@ body {
 
 .active.bathroom-panel-header {
   background-color: #EEE;
+}
+
+/** queue items **/
+.queue-item {
+  border-top: 1px solid #ccc;
+  width: 100%;
+  padding: 0.5em;
 }
