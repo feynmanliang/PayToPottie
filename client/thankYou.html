@@ -1,0 +1,13 @@
+<template name="thankYou">
+  <div class="thank-you-message">
+    <div class="thank-you-main">
+      Thank You For Using {{name}}<br />
+    </div>
+    Rate it<br />
+    <div class="thank-you-rate">
+      {{> starsRating id='rating' class='thank-you-rate-stars' mutable=true size='lg'}}
+    </div>
+    <br />
+    <a href="/bathroom/" class="thank-you-find-again btn btn-default">Find a bathroom again</a>
+  </div>
+</template>
