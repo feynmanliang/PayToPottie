@@ -119,7 +119,18 @@ Router.route('/profile',{
   }
 });
 
-
+Router.route('/thankYou/:_id', {
+  name: 'thankYou',
+  template: 'thankYou',
+  data: function() {
+    return Bathrooms.findOne({_id: this.params._id})
+  },
+  subscriptions: function() {
+    return [
+      Meteor.subscribe('bathroom', this.params._id),
+    ];
+  }
+});
 
 Router.route('/',{
   template: 'gateway',
@@ -133,15 +144,3 @@ Router.route('/',{
   }
 });
 
-Router.route('/thankYou/:_id', {
-  name: 'thankYou',
-  template: 'thankYou',
-  data: function() {
-    return Bathrooms.findOne({_id: this.params._id})
-  },
-  subscriptions: function() {
-    return [
-      Meteor.subscribe('bathroom', this.params._id),
-    ];
-  }
-})

@@ -10,7 +10,8 @@ h2 {
   font-size: 120px;
   font-variant: normal;
   font-family: serif;
-  text-shadow: 4px 3px 0px white;
+  color: white;
+  text-shadow: 4px 3px 0px #3e4040;
 }
 html, body {
   color: #3e4040;

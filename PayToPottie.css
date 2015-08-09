@@ -93,7 +93,22 @@ body {
 .thank-you-message {
   font-size: 4em;
   text-align: center;
-  content: '\u1F4A9'
+}
+
+.thank-you-rate-stars {
+  content: '💩';
+}
+
+.thank-you-rate-stars .stars {
+    opacity: 0.4;
+}
+
+.thank-you-rate-stars .current-rating {
+  opacity: 1.0;
+}
+
+.thank-you-rate-stars .active {
+  opacity: 1.0;
 }
 
 .thank-you-rate {
