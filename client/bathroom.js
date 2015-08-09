@@ -15,7 +15,7 @@ Template.bathroom.helpers({
     if (queueLength === 0) {
       return "There's no line!";
     } else if (position === 0) {
-      return "Finally... it's your turn!";
+      return "It's your turn!";
     } else if (position === -1) {
       return "You're not in line...";
     }  else {

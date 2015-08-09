@@ -15,9 +15,7 @@ Template.directions.helpers({
 Template.directions.onRendered(function() {
   var self = this;
   Tracker.autorun(function() {
-    console.log(this);
     if (this.data) {
-      console.log(this);
       var pos = Location.getLastPosition();
       var lonLat = this.data.loc.coordinates;
       GoogleMaps.ready('directionsMap', function(map) {

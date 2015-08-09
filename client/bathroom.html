@@ -1,22 +1,25 @@
 <template name="bathroom">
   <div class="row">
-    <div class="description col-lg-10">{{name}}</div>
-    <a href="/bathroom/edit/{{_id}}" class="btn btn-warning col-lg-1 editBathroom">Edit</a>
-    <a href="/bathroom" class="btn btn-default col-lg-1">Return</a>
-  </div>
-  <div class="row">
     <div class="col-lg-7">
       {{> directions}}
     </div>
     <div class="col-lg-5">
       <div class="row">
-        <div class="timeuntilready progress col-lg-10">
-          {{> countdown}}
+        <p class="toiletName text-center col-lg-12">You're going to: {{name}}</p>
+      </div>
+      <div class="row center-block">
+        <div class="col-lg-2">
+          <p class="text-right">Estimated wait:</p>
+        </div>
+        <div class="col-lg-10">
+          <div class="timeuntilready progress">
+            {{> countdown}}
+          </div>
         </div>
       </div>
       <div class="row">
-        <div class="col-lg-12">
-          <h1 class="text-center">{{positionInQueue}}</h1>
+        <div class="center-block text-center col-lg-12">
+          <p>{{positionInQueue}}</p>
           {{> joinQueue}}
         </div>
       </div>

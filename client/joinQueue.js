@@ -40,7 +40,7 @@ Template.joinQueue.helpers({
       // has reservation
       return 'Cancel';
     } else {
-      return 'Go';
+      return 'Reserve';
     }
   }
 })
