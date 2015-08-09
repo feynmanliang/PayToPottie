@@ -11,8 +11,12 @@ Meteor.startup(function() {
     return Bathrooms.find({_id: bathroomId});
   });
 
+
+  Meteor.publish('reservations', function() {
+    return Reservations.find({});
+  });
+
   Meteor.publish('reservationsFor', function(bathroomId) {
-    console.log(bathroomId);
     return Reservations.find({bathroomId: bathroomId});
   });
 

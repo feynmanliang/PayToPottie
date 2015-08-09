@@ -32,14 +32,10 @@ Router.route('/bathroom', {
   template: 'bathrooms',
   subscriptions: function() {
     // TODO: support maxDistance
-    return Meteor.subscribe('nearbyBathrooms', 0.1, 0.2);
-  }
-});
-
-Router.route('/gateway',{
-  template: 'gateway',
-  after: function (){
-    Session.set('showRegister', false);
+    return [
+      Meteor.subscribe('reservations'),
+      Meteor.subscribe('nearbyBathrooms', 0.1, 0.2)
+    ];
   }
 });
 
@@ -50,3 +46,11 @@ Router.configure({
 Router.route('/imageUpload',{
   template: 'imageUpload'
 });
+
+Router.route('/',{
+  template: 'gateway',
+  after: function (){
+    Session.set('showRegister', false);
+  }
+});
+
