@@ -1,6 +1,24 @@
 Template.bathrooms.helpers({
   bathroomList: function() {
-    return Bathrooms.find();
+    var distances = Session.get('distanceMatrix');
+    if (distances) {
+      var bathroomsWithDistances = Bathrooms.find({}, {limit: 10}).map(function(elem, i) {
+        elem.distance = distances.rows[0].elements[i].duration.value;
+        return elem
+      });
+      console.log(_.sortBy(bathroomsWithDistances, function(elem) {
+        return elem.distance;
+      }));
+      var sorted = _.sortBy(bathroomsWithDistances, function(elem) {
+        return elem.distance;
+      });
+      return _.map(sorted, function(e, i) {
+        e.rank = i;
+        return e;
+      });
+    } else {
+      return Bathrooms.find({}, {limit: 10});
+    }
   },
 });
 
