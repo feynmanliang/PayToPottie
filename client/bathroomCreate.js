@@ -8,8 +8,8 @@ Template.bathroomCreate.events({
     geocode.geocode({
       address: bathroom.address.value
     }, function(geocodeResult) {
-
       if(geocodeResult.length === 0) // user didn't input location information
+        alert("Need address!");
         return;
 
       var latLng = geocodeResult.shift().geometry.location
