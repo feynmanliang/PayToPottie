@@ -1,0 +1,15 @@
+<template name="userProfile">
+  <h1>Your Bathrooms</h1>
+  <a href="/bathroom/new" type="button" class="btn btn-default">
+    Add Bathroom<span class="glyphicon glyphicon-plus"></span>
+  </a>
+  <div class="prof-container">
+    <ul class="nav nav-pills nav-stacked">
+    {{#each Bathrooms}}
+      <li class="list-group-item">
+        {{> Bathroom}}
+      </li>
+    {{/each}}
+    </ul>
+  </div>
+</template>

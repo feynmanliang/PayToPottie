@@ -9,7 +9,7 @@ Template.logoutButton.events({
 Template.logoutButton.helpers({
   user: function() {
     if (Meteor.userId()) {
-      return "logout, " + Meteor.user().emails[0].address;
+      return "Logout";
     }
   }
 });

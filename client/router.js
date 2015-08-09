@@ -85,6 +85,8 @@ Router.route('/bathroom', {
     ];
   },
   after: function (){
+    Session.set('userProf', "inactive");
+    Session.set('pottyLogo', "inactive");
     Session.set('logState', "inactive");
     Session.set('bathroomState', "active");
   }
@@ -96,15 +98,36 @@ Router.route('/imageUpload',{
 });
 
 Router.route('/about',{
-  template: 'About'
+  template: 'About',
+  after: function (){
+    Session.set('userProf', "inactive");
+    Session.set('pottyLogo', "active");
+    Session.set('logState', "inactive");
+    Session.set('bathroomState', "inactive");
+
+  }
 });
+
+Router.route('/profile',{
+  template: 'userProfile',
+  after: function (){
+    Session.set('userProf', "active");
+    Session.set('pottyLogo', "inactive");
+    Session.set('logState', "inactive");
+    Session.set('bathroomState', "inactive");
+
+  }
+});
+
 
 
 Router.route('/',{
   template: 'gateway',
   after: function (){
+    Session.set('userProf', "inactive");
     Session.set('logState', "active");
     Session.set('bathroomState', "inactive");
+    Session.set('pottyLogo', "inactive");
     Session.set('showRegister', false);
   }
 });

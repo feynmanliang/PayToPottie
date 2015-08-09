@@ -14,6 +14,12 @@ Template.main.helpers({
   },
   logState: function() {
     return Session.get('logState');
+  },
+  pottyLogo: function() {
+    return Session.get('pottyLogo');
+  },
+  userProf: function() {
+    return Session.get('userProf');
   }
 });
 
