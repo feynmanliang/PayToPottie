@@ -1,5 +1,5 @@
 <template name="bathrooms">
-    <table class="table">
+    <table class="table-bordered">
         <thead>
             <tr>
                 <th>Wait Time</th>
@@ -9,17 +9,19 @@
             </tr>
         </thead>
         <tbody>
-          {{#each nearby}} 
+          {{#each bathroomList}}
             {{> indBathroom}}
           {{/each}}
         </tbody>
     </table>
+    {{> map}}
 </template>
 <template name="indBathroom">
     <tr>
-        <td>{{timeUntilReady _id}}</td>
-        <td><a href="/bathroom/{{_id}}">{{name}}</a></td>
+        <td>
+            <a href="/bathroom/{{_id}}">Click</a>{{timeUntilReady _id}}</td>
+        <td>{{name}}</td>
         <td>{{owner}}</td>
-        <td>{{> joinQueue}}</td>
+        <td><button>{{> joinQueue}}</button></td>
     </tr>
 </template>

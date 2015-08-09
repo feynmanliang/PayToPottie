@@ -1,6 +1,7 @@
 Template.bathrooms.helpers({
-  nearby: function() {
+  bathroomList: function() {
     var loc = Geolocation.latLng();
     return Bathrooms.find();
   }
 });
+
