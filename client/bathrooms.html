@@ -1,9 +1,9 @@
 <template name="bathrooms">
   <div class="row bathroom-container">
-    <div class="col-lg-7 bathroom-map">
+    <div class="col-lg-8 bathroom-map">
       {{> map}}
     </div>
-    <div class="col-lg-5">
+    <div class="col-lg-4">
       {{#each bathroomList}}
         {{> indBathroom}}
       {{/each}}
@@ -18,7 +18,7 @@
       <div class="bathroom-order col-lg-2">
         {{rank}}
       </div>
-      <div class="col-lg-10">
+      <div class="col-lg-8">
         <div class="row">
           <div class="bathroom-name col-lg-12">
             <h4>{{name}}</h4>
