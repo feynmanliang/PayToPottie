@@ -9,9 +9,8 @@ Template.login.events({
       }
     })
     var _id = Meteor.userId();
-    console.log(_id);
     if (_id) {
-      Router.go('/bathrooms');
+      Router.go('/bathroom');
     } else {
       throw Error("this user id doesn't exist or user isn't "+
                    "being logged in.");
