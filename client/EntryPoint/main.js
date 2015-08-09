@@ -8,6 +8,12 @@ Template.main.helpers({
     if (Meteor.user() === null) {
       return true;
     }
+  },
+  bathroomState: function() {
+    return Session.get('bathroomState');
+  },
+  logState: function() {
+    return Session.get('logState');
   }
 });
 
