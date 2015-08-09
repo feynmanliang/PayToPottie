@@ -16,11 +16,15 @@
   </div>
   <div class="row">
     <div class="col-lg-2">
-      {{> joinQueue}}
+      {{#if inQueue}}
+        <button type="button" class="btn btn-danger leave-queue">&times;</button>
+      {{else}}
+        {{> joinQueue}}
+      {{/if}}
     </div>
     <div class="col-lg-10">
       <h1 class="text-center">{{positionInQueue}}</h1>
     </div>
-    {{> queue}}
   </div>
+  <!--{{> queue}}-->
 </template>

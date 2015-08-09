@@ -1,15 +1,13 @@
 <template name="bathrooms">
   <button class="btn btn-success addBathroom">Add Bathroom</button>
-  <div class="container-fluid">
-    <div class="row">
-      <div class="col-lg-2">
-        {{#each bathroomList}}
-          {{> indBathroom}}
-        {{/each}}
-      </div>
-      <div class="col-lg-10">
-        {{> map}}
-      </div>
+  <div class="row">
+    <div class="col-lg-2">
+      {{#each bathroomList}}
+        {{> indBathroom}}
+      {{/each}}
+    </div>
+    <div class="col-lg-10">
+      {{> map}}
     </div>
   </div>
 </template>

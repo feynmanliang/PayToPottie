@@ -6,7 +6,7 @@ Template.bathrooms.helpers({
 
 Template.bathrooms.events({
   'click .addBathroom': function(event) {
-    Router.go('/bathroom/new');
+    Router.go('bathroom.create');
   }
 })
 

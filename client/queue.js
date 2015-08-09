@@ -19,11 +19,11 @@ Template.queueItem.helpers({
 
 
 Template.queueItem.events({
+  // Should be used only for removing others from a queue you own
   "click .remove-queue-item": function(event) {
     var reservation = Reservations.findOne(event.target.id);
-    console.log(reservation);
-    if (this.bathroomId.owner === Meteor.userId()
-        || reservation.userId === Meteor.userId()){
+    var bathroom = Bathrooms.findOne(this.bathroomId);
+    if (bathroom.owner === Meteor.userId()) {
       Reservations.remove(event.target.id);
     }
   }
