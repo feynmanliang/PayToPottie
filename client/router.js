@@ -2,8 +2,13 @@ Router.configure({
     layoutTemplate: 'main'
 });
 
+Router.route('/bathroom/new', {
+  name: 'bathroom.create',
+  template: 'bathroomCreate'
+});
+
 Router.route('/bathroom/edit/:_id', {
-  name: 'bathroomCreate',
+  name: 'bathroom.edit',
   template: 'bathroomCreate',
   data: function() {
     return Bathrooms.findOne({_id: this.params._id});
@@ -13,9 +18,6 @@ Router.route('/bathroom/edit/:_id', {
   }
 });
 
-Router.route('/bathroom/new', function() {
-  this.render('bathroomCreate')
-});
 
 Router.route('/bathroom/:_id', {
   name: 'bathroom',

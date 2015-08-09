@@ -8,8 +8,14 @@ Template.bathroom.onRendered(function() {
 });
 
 Template.bathroom.helpers({
+  inQueue: function() {
+    var queue = Reservations
+      .find({bathroomId: this._id}, {sort: { createdAt: 1}})
+      .map(function(reservation) { return reservation.userId; });
+    var position = queue.indexOf(Meteor.userId());
+    return position !== -1;
+  },
   positionInQueue: function() {
-    // TODO
     var queue = Reservations
       .find({bathroomId: this._id}, {sort: { createdAt: 1}})
       .map(function(reservation) { return reservation.userId; });
@@ -33,3 +39,16 @@ Template.bathroom.helpers({
     return (((countdown / start) || 0) * 100).toFixed(2) + "%";
   }
 });
+
+Template.bathroom.events({
+  "click .leave-queue": function(event) {
+    var reservation = Reservations.findOne({
+      bathroomId: this._id,
+      userId: Meteor.userId()
+    });
+    if (reservation) {
+      Reservations.remove(reservation._id);
+    }
+  }
+})
+
