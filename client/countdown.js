@@ -11,9 +11,6 @@ Template.countdown.helpers({
 })
 
 Template.countdown.onRendered(function() {
-  // Resets countdown start to queue length when
-  // 1. page load
-  // 2. new item added to queue
   if (this.data && typeof(this.data) !== "undefined") {
     startBathroomCountdown(this.data._id);
   }
