@@ -6,3 +6,24 @@ html, body {
   overflow-x: hidden;
   vertical-align: baseline;
 }
+
+/* CSS declarations go here */
+body {
+    width: 800px;
+    margin: auto;
+    line-height: 1.5;
+}
+
+.description {
+    font-size: 1.2em;
+}
+
+.map-container {
+  width: 100%;
+  max-width: 100%;
+  height: 500px;
+}
+
+.remove-queue-item {
+  float: left;
+}
