@@ -38,7 +38,12 @@ Router.route('/bathroom', {
       Meteor.subscribe('reservations'),
       Meteor.subscribe('nearbyBathrooms', loc ? loc.lng : 0.1, loc ? loc.lat : 0.1)
     ];
+  },
+  after: function (){
+    Session.set('logState', "inactive");
+    Session.set('bathroomState', "active");
   }
+
 });
 
 Router.configure({
@@ -52,6 +57,8 @@ Router.route('/imageUpload',{
 Router.route('/',{
   template: 'gateway',
   after: function (){
+    Session.set('logState', "active");
+    Session.set('bathroomState', "inactive");
     Session.set('showRegister', false);
   }
 });
