@@ -12,9 +12,15 @@
       </div>
       <div class="row center-block">
         <div class="col-lg-10">
-          <div class="timeuntilready progress">
-            {{> countdown}}
-          </div>
+          {{#if inQueue}}
+            <div class="timeuntilready progress">
+              {{> countdown}}
+            </div>
+          {{else}}
+            <div class="timeuntilready">
+              Estimated Wait: {{countdown _id}}
+            </div>
+          {{/if}}
         </div>
       </div>
       <div class="row">

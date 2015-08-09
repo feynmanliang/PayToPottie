@@ -11,10 +11,7 @@ Template.countdown.helpers({
 })
 
 Template.countdown.onRendered(function() {
-  Tracker.autorun(function() {
-    Reservations.count(); // add reactive dependency
-    if (this.data && typeof(this.data) !== "undefined") {
-      startBathroomCountdown(this.data._id);
-    }
-  });
+  if (this.data && typeof(this.data) !== "undefined") {
+    startBathroomCountdown(this.data._id);
+  }
 });
