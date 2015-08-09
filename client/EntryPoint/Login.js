@@ -1,6 +1,7 @@
 Template.login.events({
   'submit form': function(event){
     event.preventDefault();
+    Session.set('loginError', false);
     var email = $('[name=email]').val();
     var password = $('[name=password]').val();
     Meteor.logoutOtherClients();
