@@ -1,16 +1,36 @@
   Meteor.startup(function () {
     if (Bathrooms.find().count() === 0) {
       Bathrooms.insert({
-        // TODO: GPS coords for bathroom
         // TODO: Photos for bathrooms
         name: "My awesome toilet",
         description: "poo poo pew pew poo poo",
         price: 2.55,
-        owner: 11
+        owner: 11,
+        loc: {
+          type : "Point",
+          coordinates : [
+            -0.12,
+            51.50
+          ]
+        }
+      });
+      Bathrooms.insert({
+        // TODO: Photos for bathrooms
+        name: "So far!",
+        description: "poo poo pew pew poo poo",
+        price: 2.55,
+        owner: 11,
+        loc: {
+          type : "Point",
+          coordinates : [
+            0,
+            0
+          ]
+        }
       });
     }
     if (Reservations.find().count() === 0) {
-      var bathroomId = Bathrooms.findOne()._id;
+      var bathroomId = Bathrooms.findOne({name: "My awesome toilet"})._id;
       Reservations.insert({
         userId: 123,
         bathroomId: bathroomId,
