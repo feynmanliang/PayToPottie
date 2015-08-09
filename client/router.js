@@ -1,3 +1,7 @@
+Router.configure({
+    layoutTemplate: 'main'
+});
+
 Router.route('/bathroom/edit/:_id', {
   name: 'bathroomCreate',
   template: 'bathroomCreate',
@@ -39,10 +43,6 @@ Router.route('/bathroom', {
       Meteor.subscribe('nearbyBathrooms', loc ? loc.lng : 0.1, loc ? loc.lat : 0.1)
     ];
   }
-});
-
-Router.configure({
-    layoutTemplate: 'main'
 });
 
 Router.route('/imageUpload',{
