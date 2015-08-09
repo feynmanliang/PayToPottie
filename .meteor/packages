@@ -16,7 +16,6 @@ momentjs:moment
 iron:router
 mdg:geolocation
 dburles:google-maps
-vsivsi:file-collection
 benjaminrh:jquery-cookie
 jquery
 mirrorcell:geolocation-plus

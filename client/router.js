@@ -93,10 +93,6 @@ Router.route('/bathroom', {
 
 });
 
-Router.route('/imageUpload',{
-  template: 'imageUpload'
-});
-
 Router.route('/about',{
   template: 'About',
   after: function (){
