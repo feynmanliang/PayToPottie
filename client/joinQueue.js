@@ -2,29 +2,41 @@ Template.joinQueue.events({
   "click .joinQueue": function(event) {
     event.preventDefault();
 
-    var canJoin = true;
-    var currId = Meteor.userId();
+    var queue = Reservations.findOne({bathroomId: this._id, userId: Meteor.userId()});
 
-    var currQ = Reservations.find({bathroomId: this._id});
-    var currBathroom = Bathrooms.findOne({_id: this._id});
-
-    currQ.forEach(function(customer) {
-      if (customer.userId === currId) {
-        canJoin = false;
-      }
-    });
-
-
-    var newReservation = {
-      userId: currId,
-      createdAt: moment().valueOf(),
-      bathroomId: this._id,
-      status: "Active"
-    };
-    if (canJoin && currBathroom.active) {
-      Reservations.insert(newReservation);
-
+    // if queue exists, remove it
+    // otherwise insert new queue
+    console.log("queue", queue);
+    if(queue) {
+      Reservations.remove(queue._id);
+    } else {
+      var result = Reservations.insert({
+        userId: Meteor.userId(),
+        createdAt: moment().valueOf(),
+        bathroomId: this._id,
+        status: "Active"
+      });
+      console.log("reservation id:", result);
       startBathroomCountdown(this._id);
     }
-   }
+  }
 });
+
+Template.joinQueue.helpers({
+  class: function() {
+    if(Reservations.findOne({bathroomId: this._id, userId: Meteor.userId()})) {
+      // has reservation
+      return "btn-danger leave-queue";
+    } else {
+      return 'btn-success';
+    }
+  },
+  text: function() {
+    if(Reservations.findOne({bathroomId: this._id, userId: Meteor.userId()})) {
+      // has reservation
+      return 'Cancel';
+    } else {
+      return 'Go';
+    }
+  }
+})
