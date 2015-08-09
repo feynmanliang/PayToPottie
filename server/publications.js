@@ -1,4 +1,4 @@
-// TODO: Make this work
+// TODO: Make bathroom list only show first 10 nearby bathrooms
 Meteor.publish({
   'nearbyBathrooms': function(lon, lat) {
     if (!lon && !lat) {
