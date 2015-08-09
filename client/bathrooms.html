@@ -13,7 +13,7 @@
 </template>
 
 <template name="indBathroom">
-  <div class="bathroom-locations {{hovereMarkerStyle}}" id="{{_id}}">
+  <div class="bathroom-locations {{hoveredMarkerStyle}}" id="{{_id}}">
     <div class="row">
       <div class="bathroom-order col-lg-2">
         {{rank}}
@@ -35,16 +35,5 @@
         </div>
       </div>
     </div>
-
-        <!-- <div class="col-lg-3 countdown-timer">{{countdown _id}}</div>
-        <div class="col-lg-6 name"><a href="/bathroom/{{_id}}">{{name}}</a></div>
-        <div class="col-lg-3">{{> joinQueue}}</div>
-        <div id="collapse-{{_id}}" class="panel-collapse collapse" role="tabpanel">
-          <div class="bathroom-panel-body row">
-            <div class="col-lg-9"></div>
-            <div class="countdown col-lg-9">{{> countdown}}</div>
-          </div>
-        </div>
-      </div> -->
   </div>
 </template>

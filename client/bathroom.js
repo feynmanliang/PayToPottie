@@ -14,6 +14,8 @@ Template.bathroom.helpers({
     var queueLength = Reservations.find({ bathroomId: this._id }).count();
     if (queueLength === 0) {
       return "There's no line!";
+    } else if {
+      return "Finally... it's your turn!";
     } else if (position == -1) {
       return "You're not in line...";
     }  else {
