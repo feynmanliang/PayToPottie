@@ -4,7 +4,7 @@ Template.bathroomCreate.events({
     window.something = event.target;
     console.log(event.target);
     // TODO: change to current user's id
-    var owner = Math.floor(Math.random() * 100) + 1;
+    var owner = Meteor.userId() || undefined;
     var bathroomId = Bathrooms.insert({
       // TODO: GPS coords for bathroom
       // TODO: Photos for bathrooms
