@@ -7,9 +7,10 @@ Template.login.events({
     Meteor.loginWithPassword(email, password, function(error){
       if (error) {
         throw Error(error);
+      } else {
+      Router.go('/bathroom');
       }
     })
-    Router.go('/bathroom');
   },
   'click .register': function(event){
     event.preventDefault();

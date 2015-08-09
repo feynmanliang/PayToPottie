@@ -1,14 +1,24 @@
 <template name="main">
 <ul class="nav nav-pills nav-justified">
-  <li class="potty-logo" role="presentation">
-        <div class="about-container">
-          <a class="header-hyper" href="/about"><h2> PayToPottie </h2> potty with us</a>
-        </div>
+  <li class={{pottyLogo}} id="potty-logo" role="presentation">
+    <a class="header-hyper" href="/about"><h3>PayToPotty
+    </h3><span class="glyphicon glyphicon-hand-up"></span></a>
   </li>
 
   <li role="presentation" class={{bathroomState}} id="bathroom-list">
-      <a href="/bathroom"><h2>Bathrooms</h2></a>
+      <a href="/bathroom"><h3>Bathrooms</h3>
+        <span class="glyphicon glyphicon-globe"></span>
+      </a>
+
   </li>
+  {{#if loggedIn}}
+    <li role="presentation" class={{userProf}} id="log-buttons">
+      <a href="/profile"><h3>Profile</h3>
+        <span class="glyphicon glyphicon-home"></span>
+      </a>
+    </li>
+  {{/if}}
+
   <li role="presentation" class={{logState}} id="log-buttons">
 
         {{#if loggedIn}}
@@ -22,4 +32,12 @@
   <div class="container">
     {{> yield}}
   </div>
+  <nav class="navbar navbar-default">
+    <div class="container-fluid">
+      <div class="navbar-header">
+        <a class="navbar-brand" href="#">
+        </a>
+      </div>
+    </div>
+  </nav>
 </template>

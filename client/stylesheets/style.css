@@ -2,6 +2,10 @@ h2 {
   font-weight: 600;
 }
 
+.register {
+  color: #3e4040;
+}
+
 .login-header {
   font-size: 120px;
   font-variant: normal;
@@ -9,6 +13,7 @@ h2 {
   text-shadow: 4px 3px 0px white;
 }
 html, body {
+  color: #3e4040;
   margin: 0;
   padding: 0;
   width: 100%;
@@ -17,22 +22,16 @@ html, body {
   vertical-align: baseline;
 }
 
-.about-box {
-  background-image: url("http://www.photos-public-domain.com/wp-content/uploads/2010/11/no_public_restroom.jpg");
-  background-repeat:no-repeat;
-  background-size: 100%;
-}
-
-.paragraph-frame {
-  height: 700px;
-  width: 90%;
-  margin-left: 5%;
-}
-
 .paragraph-box {
   background-color: rgba(255, 255, 255, 0.9);
-  height: 300px;
+  height: 850px;
 }
+
+.about-us-header {
+  font-size: 100px;
+  margin-top: 100px;
+}
+
 
 .header-hyper {
   text-decoration: none;
@@ -80,28 +79,41 @@ html, body {
   background-color:#f2f2f2;
 }
 
+.prof-container {
+  padding: 100px;
+  margin: 100px;
+}
+
 p {
   color: #3e4040;
 }
 
 a {
   color: #3e4040;
+  text-decoration: none;
 }
 
-.potty-logo {
+#potty-logo {
   position: relative;
   text-align: center;
   text-decoration: none;
 }
 
-.potty-logo:active {
+#potty-logo:active {
   text-decoration: none;
 }
 
-.potty-logo:hover {
+#potty-logo:hover {
   text-decoration: none;
 }
 
+.list-item {
+  list-style: none;
+}
+
+.list-item:hover {
+  color: black;
+}
 
 
 .potty-header {
@@ -110,5 +122,4 @@ a {
   color: #3e4040;
   margin: 15px 0px;
   font-weight: normal;
-  font-family: 'Roboto', sans-serif;
 }
