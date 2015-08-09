@@ -1,8 +1,39 @@
 #logout-button:active {
-  background-color: blue;
+  background-color: #337ab7;
 }
 
 #login-button:active {
-  background-color: blue;
+  background-color: #337ab7;
 }
 
+.form-control:hover {
+  background-color:#f2f2f2;
+}
+
+p {
+  color: #3e4040;
+}
+
+a {
+  color: #3e4040;
+}
+
+.potty-logo {
+  position: relative;
+  text-align: center;
+}
+
+.about-container {
+  position: absolute;
+  top: 0px;
+  margin: 0px 15px 0px 15px;
+}
+
+.potty-header {
+  font-size: 42px;
+  line-height: 54px;
+  color: #3e4040;
+  margin: 15px 0px;
+  font-weight: normal;
+  font-family: 'Roboto', sans-serif;
+}

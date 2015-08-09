@@ -54,6 +54,11 @@ Router.route('/imageUpload',{
   template: 'imageUpload'
 });
 
+Router.route('/about',{
+  template: 'About'
+});
+
+
 Router.route('/',{
   template: 'gateway',
   after: function (){
