@@ -109,3 +109,15 @@ Router.route('/',{
   }
 });
 
+Router.route('/thankYou/:_id', {
+  name: 'thankYou',
+  template: 'thankYou',
+  data: function() {
+    return Bathrooms.findOne({_id: this.params._id})
+  },
+  subscriptions: function() {
+    return [
+      Meteor.subscribe('bathroom', this.params._id),
+    ];
+  }
+})

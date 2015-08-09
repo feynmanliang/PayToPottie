@@ -88,3 +88,18 @@ body {
   float: left;
   padding: 0em 1em;
 }
+
+/** Thank you page **/
+.thank-you-message {
+  font-size: 4em;
+  text-align: center;
+  content: '\u1F4A9'
+}
+
+.thank-you-rate {
+  display: inline-block
+}
+
+.thank-you-find-again {
+  font-size: 0.25em;
+}
