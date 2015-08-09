@@ -8,15 +8,6 @@ CRON_INTERVAL = 'every 5 seconds';
 BATHROOM_TIME_SECONDS = 10;
 
 // TODO: make this a pub-sub so bathrooms that are added are reactively updated
-Meteor.methods({
-  'nearbyBathrooms': function(lon, lat) {
-    if (!lon && !lat) {
-      return [];
-    }
-    return Bathrooms.find({ "loc.coordinates" : { $near : [lon, lat] } })
-  }
-});
-
 
 if (Meteor.isClient) {
   UI.registerHelper('formatTime', function(context, options) {
