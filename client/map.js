@@ -41,10 +41,6 @@ Template.map.onCreated(function() {
           map: map.instance
         });
       }
-
-      // Center and zoom the map view onto the current position.
-      //map.instance.setCenter(marker.getPosition());
-      //map.instance.setZoom(MAP_ZOOM);
     });
   });
 });
