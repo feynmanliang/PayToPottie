@@ -1,7 +1,7 @@
 Reservations = new Mongo.Collection('reservations');
 Bathrooms = new Mongo.Collection('bathrooms');
 if (Meteor.isServer) {
-  Bathrooms._ensureIndex({"loc.coordinates" : "2d"});
+  Bathrooms._ensureIndex({"loc" : "2dsphere"});
 }
 // TODO: only publish images for current bathroom
 BathroomImages = new FileCollection('bathroomImages', {

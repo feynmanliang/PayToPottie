@@ -6,9 +6,14 @@ Meteor.startup(function() {
       return Bathrooms.find();
     }
     return Bathrooms.find({
-      "loc.coordinates" : {
-        $near : [lon, lat],
-        $maxDistance: 10
+      "loc" : {
+        $near : {
+          $geometry : {
+            type : "Point" ,
+            coordinates : [lon, lat]
+          },
+          $maxDistance: 1000
+        }
       }
     });
   });
