@@ -9,13 +9,7 @@ Template.login.events({
         throw Error(error);
       }
     })
-    var _id = Meteor.userId();
-    if (_id) {
-      Router.go('/bathroom');
-    } else {
-      throw Error("this user id doesn't exist or user isn't "+
-                   "being logged in.");
-    }
+    Router.go('/bathroom');
   },
   'click .register': function(event){
     event.preventDefault();
