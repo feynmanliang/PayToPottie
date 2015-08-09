@@ -1,14 +1,5 @@
 var MAP_ZOOM = 15;
 
-Meteor.startup(function() {
-  Location.locate(function(pos) {
-    console.log("Got location", pos);
-    GoogleMaps.load();
-  }, function(err) {
-    console.log("Oops! There was an error", err);
-  });
-});
-
 Template.map.helpers({
   geolocationError: function() {
     var error = Geolocation.error();

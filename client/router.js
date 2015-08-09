@@ -22,6 +22,15 @@ Router.route('/bathroom/edit/:_id', {
 Router.route('/bathroom/:_id', {
   name: 'bathroom',
   template: 'bathroom',
+  onBeforeAction: function() {
+    Location.locate(function(pos) {
+      console.log("Got location", pos);
+      GoogleMaps.load();
+    }, function(err) {
+      console.log("Oops! There was an error", err);
+    });
+    this.next()
+  },
   data: function() {
     return Bathrooms.findOne({_id: this.params._id})
   },
@@ -36,6 +45,15 @@ Router.route('/bathroom/:_id', {
 Router.route('/bathroom', {
   name: 'bathrooms',
   template: 'bathrooms',
+  onBeforeAction: function() {
+    Location.locate(function(pos) {
+      console.log("Got location", pos);
+      GoogleMaps.load();
+    }, function(err) {
+      console.log("Oops! There was an error", err);
+    });
+    this.next()
+  },
   subscriptions: function() {
     var loc = Location.getReactivePosition();
 
