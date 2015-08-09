@@ -40,9 +40,13 @@ Template.map.onCreated(function() {
           id: bathroom._id
         });
 
+        // Handle marker hovering
+        google.maps.event.addListener(marker, 'mouseover', function(event) {
+          Session.set('hoveredMarker', bathroom._id);
+        });
         // Handle marker clicking
         google.maps.event.addListener(marker, 'click', function(event) {
-          Session.set('selectedMarker', bathroom._id);
+          toggleBathroomPanelBody(bathroom._id);
         });
       },
       changed: function(newBathroom, oldBathroom) {

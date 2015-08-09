@@ -9,7 +9,6 @@ html, body {
 
 /* CSS declarations go here */
 body {
-    width: 800px;
     margin: auto;
     line-height: 1.5;
 }
@@ -26,4 +25,39 @@ body {
 
 .remove-queue-item {
   float: left;
+}
+
+/** Bathroom Panel **/
+.bathroom-item {
+   margin-right: -30px;
+   border-top: 1px solid #777;
+   border-bottom: 1px solid #777;
+   margin-top: -1px;
+}
+.bathroom-panel {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  margin-right: -15px;
+}
+
+.bathroom-panel-header {
+  margin: 0;
+  padding: 0.5em 0.25em;
+  height: 100%;
+}
+
+.bathroom-panel-body {
+
+}
+
+.active.bathroom-panel-header {
+  background-color: #EEE;
+}
+
+/** queue items **/
+.queue-item {
+  border-top: 1px solid #ccc;
+  width: 100%;
+  padding: 0.5em;
 }
