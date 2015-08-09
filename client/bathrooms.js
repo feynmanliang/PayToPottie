@@ -3,7 +3,7 @@ Template.bathrooms.helpers({
     var distances = Session.get('distanceMatrix');
     if (distances) {
       var bathroomsWithDistances = Bathrooms.find({}, {limit: 10}).map(function(elem, i) {
-        elem.distance = distances.rows[0].elements[i].duration.value;
+        elem.distance = distances.rows[0].elements[i].distance.value;
         return elem
       });
       console.log(_.sortBy(bathroomsWithDistances, function(elem) {
@@ -13,7 +13,7 @@ Template.bathrooms.helpers({
         return elem.distance;
       });
       return _.map(sorted, function(e, i) {
-        e.rank = i;
+        e.rank = i + 1;
         return e;
       });
     } else {
