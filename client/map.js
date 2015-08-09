@@ -50,9 +50,9 @@ Template.map.onCreated(function() {
         Session.set('hoveredMarker', bathroom._id);
       });
       // Handle marker clicking
-      google.maps.event.addListener(marker, 'click', function(event) {
-        toggleBathroomPanelBody(bathroom._id);
-      });
+      //google.maps.event.addListener(marker, 'click', function(event) {
+      //  toggleBathroomPanelBody(bathroom._id);
+      //});
 
       // Add to destinations
       destinations.push(

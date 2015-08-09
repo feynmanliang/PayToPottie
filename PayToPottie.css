@@ -81,9 +81,10 @@ body {
 .bathroom-locations .bathroom-order {
   float: left;
   font-size: 2.5em;
-  padding: 0 0.25em;
+  padding: 0em 1em;
 }
 
-.bathroom-locations .bathroom-name {
-
+.bathroom-locations .bathroom-order {
+  float: left;
+  padding: 0em 1em;
 }

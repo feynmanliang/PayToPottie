@@ -14,18 +14,27 @@
 
 <template name="indBathroom">
   <div class="bathroom-locations {{hovereMarkerStyle}}" id="{{_id}}">
-      <div class="bathroom-order">
+    <div class="row">
+      <div class="bathroom-order col-lg-2">
         {{rank}}
       </div>
-      <div class="bathroom-name">
-        {{name}}
-      </div>
-      <div class="bathroom-button">
-        <div class="btn btn-success">
-          Available in {{countdown _id}}
+      <div class="col-lg-10">
+        <div class="row">
+          <div class="bathroom-name col-lg-12">
+            <h4>{{name}}</h4>
+          </div>
         </div>
-        Distance: {{distance}}
+        <div class="row">
+          <div class="bathroom-button col-lg-8">
+            <p>Available in {{countdown _id}}</p>
+            <p>Distance: {{distance}}</p>
+          </div>
+          <div class="col-lg-1">
+            {{> joinQueue}}
+          </div>
+        </div>
       </div>
+    </div>
 
         <!-- <div class="col-lg-3 countdown-timer">{{countdown _id}}</div>
         <div class="col-lg-6 name"><a href="/bathroom/{{_id}}">{{name}}</a></div>
