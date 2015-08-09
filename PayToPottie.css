@@ -26,3 +26,20 @@ body {
 .remove-queue-item {
   float: left;
 }
+
+/** Bathroom Panel **/
+.bathroom-panel {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  border-bottom: 1px solid #777;
+
+}
+
+.bathroom-panel-header {
+
+}
+
+.bathroom-panel-body {
+
+}
