@@ -18,7 +18,7 @@ html, body {
 }
 
 .about-box {
-  background-image: url("http://animalphotogalleries.info/wp-content/uploads/2015/03/bathroom-out-of-order.jpg");
+  background-image: url("http://www.photos-public-domain.com/wp-content/uploads/2010/11/no_public_restroom.jpg");
   background-repeat:no-repeat;
   background-size: 100%;
 }
@@ -29,6 +29,18 @@ html, body {
 
 }
 
+.header-hyper {
+  text-decoration: none;
+}
+
+.header-hyper:active {
+  text-decoration: none;
+}
+
+.header-hyper:hover {
+  text-decoration: none;
+}
+
 .about-container {
   position: absolute;
   top: 0px;
@@ -36,10 +48,10 @@ html, body {
 
 
 .login-elt {
-    background-image: url("http://www.charmofthecarolines.com/.a/6a01156faa621f970c0154330464ac970c-pi");
+    background-image: url("https://elevateyourspace.files.wordpress.com/2012/10/screen-shot-2012-10-31-at-9-49-48-am.png");
     background-repeat:no-repeat;
     background-size: 100%;
-    margin: 100px 0px 100px 0px;
+    background-position:center center;
     padding: 100px 0px 100px 0px;
 }
 
