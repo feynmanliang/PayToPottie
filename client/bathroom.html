@@ -7,7 +7,6 @@
   <div class="row">
     <div class="owner col-lg-2">
       <p>Owner: {{owner}}</p>
-      <p>{{positionInQueue}} / {{queueLength}}</p>
     </div>
     <div class="timeuntilready progress col-lg-10">
       <div class="progress-bar" role="progressbar" style="width: {{percentSinceLoad}};">
@@ -20,7 +19,8 @@
       {{> joinQueue}}
     </div>
     <div class="col-lg-10">
-      {{> queue}}
+      <h1 class="text-center">{{positionInQueue}}</h1>
     </div>
+    {{> queue}}
   </div>
 </template>
