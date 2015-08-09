@@ -6,31 +6,33 @@ SyncedCron.add({
     return parser.text(CRON_INTERVAL);
   },
   job: function() {
-    var reservationsByCreatedAt = Reservations.find({}, {sort: { createdAt: 1}});
-    if (reservationsByCreatedAt.count() !== 0) {
-      var firstReservation = reservationsByCreatedAt.fetch()[0];
+    Bathrooms.find().forEach(function(element) {
+        var reservationsByCreatedAt = Reservations.find({bathroomId: element._id}, {sort: { createdAt: 1}});
+        if (reservationsByCreatedAt.count() !== 0) {
+          var firstReservation = reservationsByCreatedAt.fetch()[0];
 
-      if (firstReservation.beganProcessingAt === undefined) { // start processing
-        console.log("processing first item in queue");
-        startProcessing(firstReservation._id);
-      } else {
-        var timeElapsed = moment.duration(moment() - moment(firstReservation.beganProcessingAt));
+          if (firstReservation.beganProcessingAt === undefined) { // start processing
+            console.log("processing first item in queue");
+            startProcessing(firstReservation._id);
+          } else {
+            var timeElapsed = moment.duration(moment() - moment(firstReservation.beganProcessingAt));
 
-        // TODO: change to actual bathroom duration time
-        if (timeElapsed > moment.duration(BATHROOM_TIME_SECONDS, 'seconds')) {
-          console.log("Removing " + firstReservation._id);
-          Reservations.remove(firstReservation._id);
+            // TODO: change to actual bathroom duration time
+            if (timeElapsed > moment.duration(BATHROOM_TIME_SECONDS, 'seconds')) {
+              console.log("Removing " + firstReservation._id);
+              Reservations.remove(firstReservation._id);
 
-          if (reservationsByCreatedAt.count() > 0) {
-            console.log("processing next item in queue");
-            startProcessing(reservationsByCreatedAt.fetch()[0]._id);
+              if (reservationsByCreatedAt.count() > 0) {
+                console.log("processing next item in queue");
+                startProcessing(reservationsByCreatedAt.fetch()[0]._id);
+              }
+            }
           }
         }
-      }
-    }
-    else {
-      console.log("No reservations to remove!");
-    }
+        else {
+          console.log("No reservations to remove!");
+        }
+    })
   }
 });
 SyncedCron.start();

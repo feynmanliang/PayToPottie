@@ -1,0 +1,25 @@
+<template name="bathrooms">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Wait Time</th>
+                <th>Name</th>
+                <th>Owner</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+          {{#each nearby}} 
+            {{> indBathroom}}
+          {{/each}}
+        </tbody>
+    </table>
+</template>
+<template name="indBathroom">
+    <tr>
+        <td>{{timeUntilReady _id}}</td>
+        <td><a href="/bathroom/{{_id}}">{{name}}</a></td>
+        <td>{{owner}}</td>
+        <td>{{> joinQueue}}</td>
+    </tr>
+</template>

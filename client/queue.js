@@ -1,6 +1,6 @@
 Template.queue.helpers({
   listReservations: function() {
-    return Reservations.find({}, {sort: { createdAt: 1}});
+    return Reservations.find({bathroomId: this._id}, {sort: { createdAt: 1}});
   }
 });
 

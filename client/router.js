@@ -6,9 +6,13 @@ Router.route('/bathroom/:_id', function() {
   });
 });
 
+Router.route('/bathroom', function() {
+  this.render('bathrooms');
+});
+
 Router.route('/gateway',{
   template: 'gateway',
   after: function (){
     Session.set('showRegister', false);
-   }
+  }
 });
