@@ -43,6 +43,8 @@ Template.bathroomCreate.events({
   }
 });
 
-Template.bathroomCreate.isNew = function(id) {
-  return id === null;
-}
+Template.bathroomCreate.helpers({
+  isNew: function(id) {
+    return id === null;
+  }
+});
