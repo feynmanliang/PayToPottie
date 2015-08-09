@@ -1,5 +1,5 @@
 <template name="bathrooms">
-    <table class="table-bordered">
+    <table class="table">
         <thead>
             <tr>
                 <th>Wait Time</th>
@@ -17,10 +17,9 @@
 </template>
 <template name="indBathroom">
     <tr>
-        <td>
-            <a href="/bathroom/{{_id}}">Click</a>{{timeUntilReady _id}}</td>
-        <td>{{name}}</td>
+        <td>{{timeUntilReady _id}}</td>
+        <td><a href="/bathroom/{{_id}}">{{name}}</a></td>
         <td>{{owner}}</td>
-        <td><button>{{> joinQueue}}</button></td>
+        <td>{{> joinQueue}}</td>
     </tr>
 </template>
