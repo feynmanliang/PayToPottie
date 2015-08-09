@@ -17,3 +17,4 @@ twbs:bootstrap
 momentjs:moment
 iron:router
 mdg:geolocation
+dburles:google-maps
