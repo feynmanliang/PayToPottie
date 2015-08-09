@@ -35,8 +35,8 @@ Template.indBathroom.helpers({
 });
 
 Template.indBathroom.events({
-  'click .bathroom-panel': function(event) {
-    toggleBathroomPanelBody(event.currentTarget.id);
+  'click .getDirections': function(event) {
+    Router.go('bathroom', {_id: this._id});
   }
 })
 
