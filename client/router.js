@@ -28,3 +28,7 @@ Router.route('/gateway',{
     Session.set('showRegister', false);
   }
 });
+
+Router.configure({
+    layoutTemplate: 'main'
+});

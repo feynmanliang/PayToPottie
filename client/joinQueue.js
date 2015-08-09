@@ -1,11 +1,15 @@
 Template.joinQueue.events({
   "click .joinQueue": function(event) {
     event.preventDefault();
-    Reservations.insert({
-      userId: Math.floor(Math.random() * 1000) + 1,
+
+    var currId = Meteor.userId();
+    var newReservation = {
+      userId: currId,
       createdAt: moment().valueOf(),
       bathroomId: this._id,
       status: "Active"
-    });
-  }
+    };
+
+    Reservations.insert(newReservation);
+   }
 });

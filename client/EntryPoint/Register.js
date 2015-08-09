@@ -11,8 +11,7 @@ Template.register.events({
         var password = $('[name=password]').val();
 
         Meteor.call('createPottyUser',email,password);
-        if (Meteor.userId()) {
-          Router.go('/bathroom');
-        }
+        Meteor.loginWithPassword(email, password);
+        Router.go('/bathroom');
     }
 });

@@ -4,7 +4,8 @@ Meteor.methods({
                  email: email,
                  password: password,
                  profile: {
-                  owner: false
+                  owner: false,
+                  reservations: []
                  }
              });
   }
