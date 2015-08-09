@@ -25,18 +25,24 @@ Template.inUse.helpers({
 
 Template.inUse.events({
   'click .finished': function() {
-    Router.go('bathrooms');
+    var res = Reservations.find({
+      bathroomId: this._id,
+      userId: Meteor.userId()
+    });
+    Reservations.remove(res._id);
   }
 })
 
 Template.inUse.onRendered(function() {
+  var bathroom;
   if (this.data && typeof(this.data) !== "undefined") {
+    bathroom = this.data;
     startBathroomCountdown(this.data._id);
   }
 
   Tracker.autorun(function() {
     if (!this.data) {
-      Router.go('thankYou');
+      Router.go('thankYou', { _id: bathroom._id })
     }
   });
 });
