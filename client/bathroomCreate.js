@@ -9,8 +9,8 @@ Template.bathroomCreate.events({
     geocode.geocode({
       address: bathroom.address.value
     }, function(geocodeResult) {
-
       if(geocodeResult.length === 0) // user didn't input location information
+        alert("Need address!");
         return;
 
       var latLng = geocodeResult.shift().geometry.location
@@ -34,11 +34,14 @@ Template.bathroomCreate.events({
       }
       // if window.location is something like /bathroom/edit, then
       //  update, instead of insert
-      if(this._id !== undefined)
-        var bathroomId = Bathrooms.update({_id: this._id}, bathroomToSave);
-      else
-        var bathroomId = Bathrooms.insert(bathroomToSave);
-      Router.go('/bathroom/' + bathroomId);
+      if (this.owner === Meteor.userId()) {
+        if(this._id !== undefined) {
+          var bathroomId = Bathrooms.update({_id: this._id}, bathroomToSave);
+        } else {
+          var bathroomId = Bathrooms.insert(bathroomToSave);
+        Router.go('/bathroom/' + bathroomId);
+        }
+      }
     });
   }
 });
