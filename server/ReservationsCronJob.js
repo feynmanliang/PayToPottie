@@ -6,8 +6,10 @@ SyncedCron.add({
     return parser.text(CRON_INTERVAL);
   },
   job: function() {
-    Bathrooms.find().forEach(function(element) {
-        var reservationsByCreatedAt = Reservations.find({bathroomId: element._id}, {sort: { createdAt: 1}});
+    Bathrooms.find({ active: true }).forEach(function(element) {
+        var reservationsByCreatedAt = Reservations.find(
+          {bathroomId: element._id},
+          {sort: { createdAt: 1}});
         if (reservationsByCreatedAt.count() !== 0) {
           var firstReservation = reservationsByCreatedAt.fetch()[0];
 
