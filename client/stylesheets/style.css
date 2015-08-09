@@ -1,3 +1,54 @@
+h2 {
+  font-weight: 600;
+}
+
+.login-header {
+  font-size: 120px;
+  font-variant: normal;
+  font-family: serif;
+  text-shadow: 4px 3px 0px white;
+}
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  overflow-x: hidden;
+  vertical-align: baseline;
+}
+
+.about-box {
+  background-image: url("http://animalphotogalleries.info/wp-content/uploads/2015/03/bathroom-out-of-order.jpg");
+  background-repeat:no-repeat;
+  background-size: 100%;
+}
+
+.paragraph-frame {
+  height: 700px;
+  width: 700px;
+
+}
+
+.about-container {
+  position: absolute;
+  top: 0px;
+}
+
+
+.login-elt {
+    background-image: url("http://www.charmofthecarolines.com/.a/6a01156faa621f970c0154330464ac970c-pi");
+    background-repeat:no-repeat;
+    background-size: 100%;
+    margin: 100px 0px 100px 0px;
+    padding: 100px 0px 100px 0px;
+}
+
+.hp {
+  padding: 1em;
+  margin: 30px 0px 30px 0px;
+
+}
+
 #logout-button:active {
   background-color: #337ab7;
 }
@@ -21,13 +72,18 @@ a {
 .potty-logo {
   position: relative;
   text-align: center;
+  text-decoration: none;
 }
 
-.about-container {
-  position: absolute;
-  top: 0px;
-  margin: 0px 15px 0px 15px;
+.potty-logo:active {
+  text-decoration: none;
 }
+
+.potty-logo:hover {
+  text-decoration: none;
+}
+
+
 
 .potty-header {
   font-size: 42px;

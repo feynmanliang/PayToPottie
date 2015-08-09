@@ -6,8 +6,11 @@
         </div>
   </li>
 
-  <li role="presentation" class={{bathroomState}} id="bathroom-list"><a href="/bathroom"><h2>Bathrooms</h2></a></li>
+  <li role="presentation" class={{bathroomState}} id="bathroom-list">
+      <a href="/bathroom"><h2>Bathrooms</h2></a>
+  </li>
   <li role="presentation" class={{logState}} id="log-buttons">
+
         {{#if loggedIn}}
           {{> logoutButton}}
         {{/if}}
