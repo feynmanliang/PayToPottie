@@ -1,6 +1,8 @@
 Template.bathroom.onRendered(function() {
-  Session.set('pageloadStart-' + this.data._id, undefined);
-  if (typeof(this.data) !== "undefined") {
+  // Resets countdown start to queue length when
+  // 1. page load
+  // 2. new item added to queue
+  if (this.data && typeof(this.data) !== "undefined") {
     startBathroomCountdown(this.data._id);
   }
 });
@@ -19,10 +21,10 @@ Template.bathroom.helpers({
   },
   percentSinceLoad: function() {
     var bathroomId = this._id;
-    var start = Session.get('pageloadStart-' + bathroomId);
+    var start = Session.get('countdownStart-' + bathroomId);
     var countdown = Session.get('countdown-' + bathroomId) || 0;
     if (start === undefined && countdown !== 0) {
-      Session.set('pageloadStart-' + bathroomId, countdown);
+      Session.set('countdownStart-' + bathroomId, countdown);
     }
     return (((countdown / start) || 0) * 100).toFixed(2) + "%";
   }
