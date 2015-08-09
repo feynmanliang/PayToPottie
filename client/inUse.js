@@ -12,11 +12,7 @@ Template.inUse.helpers({
       userId: Meteor.userId()
     });
     if (res) {
-      return (
-        moment(
-          moment(res.beganProcessingAt)
-          + moment.duration(BATHROOM_TIME_SECONDS, 'seconds')
-      ).format('hh:mm'));
+      return moment(res.beganProcessingAt).add(BATHROOM_TIME_SECONDS, 'seconds').format('hh:mm');
     } else {
       return "";
     }
@@ -30,6 +26,15 @@ Template.inUse.events({
       userId: Meteor.userId()
     });
     Reservations.remove(res._id);
+  },
+  'click .more-time': function() {
+    var res = Reservations.findOne({
+      bathroomId: this._id,
+      userId: Meteor.userId()
+    });
+    Reservations.update(res._id, {
+       $set: {beganProcessingAt: moment(res.beganProcessingAt).add(15, 'seconds').valueOf()}
+     });
   }
 })
 
