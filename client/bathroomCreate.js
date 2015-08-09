@@ -5,6 +5,7 @@ Template.bathroomCreate.events({
     // TODO: change to current user's id
     var owner = Meteor.userId() || undefined;
     var geocode = new google.maps.Geocoder();
+
     geocode.geocode({
       address: bathroom.address.value
     }, function(geocodeResult) {
@@ -16,6 +17,7 @@ Template.bathroomCreate.events({
       var bathroomToSave = {
         // TODO: GPS coords for bathroom
         // TODO: Photos for bathrooms
+
         name: bathroom.name.value,
         description: bathroom.description.value,
         price: parseInt(bathroom.price.value),
