@@ -9,7 +9,6 @@ autopublish
 insecure
 percolate:synced-cron
 accounts-password
-useraccounts:bootstrap
 useraccounts:core
 accounts-base
 accounts-ui
