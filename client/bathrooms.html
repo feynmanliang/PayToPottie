@@ -19,7 +19,7 @@
 </template>
 
 <template name="indBathroom">
-    <tr>
+    <tr class="{{selectedMarkerStyle}}">
         <td>{{timeUntilReady _id}}</td>
         <td><a href="/bathroom/{{_id}}">{{name}}</a></td>
         <td>{{owner}}</td>

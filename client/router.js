@@ -1,3 +1,11 @@
+Router.route('/bathroom/edit/:_id', function() {
+  this.render('bathroomCreate', {
+    data: function() {
+      return Bathrooms.findOne({_id: this.params._id})
+    }
+  })
+});
+
 Router.route('/bathroom/new', function() {
   this.render('bathroomCreate')
 });
