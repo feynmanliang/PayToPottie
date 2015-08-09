@@ -2,10 +2,11 @@ Template.joinQueue.events({
   "click .joinQueue": function(event) {
     event.preventDefault();
 
-
-    var currId = Meteor.userId();
-    var currQ = Reservations.find({bathroomId: this._id});
     var canJoin = true;
+    var currId = Meteor.userId();
+
+    var currQ = Reservations.find({bathroomId: this._id});
+    var currBathroom = Bathrooms.findOne({_id: this._id});
 
     currQ.forEach(function(customer) {
       if (customer.userId === currId) {
@@ -20,7 +21,7 @@ Template.joinQueue.events({
       bathroomId: this._id,
       status: "Active"
     };
-    if (canJoin) {
+    if (canJoin && currBathroom.active) {
       Reservations.insert(newReservation);
     }
    }
