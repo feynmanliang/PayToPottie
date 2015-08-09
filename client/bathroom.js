@@ -1,12 +1,3 @@
-Template.bathroom.onRendered(function() {
-  // Resets countdown start to queue length when
-  // 1. page load
-  // 2. new item added to queue
-  if (this.data && typeof(this.data) !== "undefined") {
-    startBathroomCountdown(this.data._id);
-  }
-});
-
 Template.bathroom.helpers({
   inQueue: function() {
     var queue = Reservations
@@ -28,27 +19,5 @@ Template.bathroom.helpers({
     }  else {
       return "You are " + (position + 1) + " out of " + queueLength;
     }
-  },
-  percentSinceLoad: function() {
-    var bathroomId = this._id;
-    var start = Session.get('countdownStart-' + bathroomId);
-    var countdown = Session.get('countdown-' + bathroomId) || 0;
-    if (start === undefined && countdown !== 0) {
-      Session.set('countdownStart-' + bathroomId, countdown);
-    }
-    return (((countdown / start) || 0) * 100).toFixed(2) + "%";
   }
 });
-
-Template.bathroom.events({
-  "click .leave-queue": function(event) {
-    var reservation = Reservations.findOne({
-      bathroomId: this._id,
-      userId: Meteor.userId()
-    });
-    if (reservation) {
-      Reservations.remove(reservation._id);
-    }
-  }
-})
-

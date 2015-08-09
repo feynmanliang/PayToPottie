@@ -17,7 +17,7 @@ Template.indBathroom.helpers({
 });
 
 Template.indBathroom.events({
-  'click .bathroom-item': function(event) {
+  'click .bathroom-panel': function(event) {
     toggleBathroomPanelBody(event.currentTarget.id);
   }
 })
