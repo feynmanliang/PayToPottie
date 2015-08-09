@@ -1,7 +1,12 @@
 var MAP_ZOOM = 15;
 
 Meteor.startup(function() {
-  GoogleMaps.load();
+  Location.locate(function(pos) {
+    console.log("Got location", pos);
+    GoogleMaps.load();
+  }, function(err) {
+    console.log("Oops! There was an error", err);
+  });
 });
 
 Template.map.helpers({
@@ -25,44 +30,46 @@ Template.map.onCreated(function() {
   var self = this;
 
   GoogleMaps.ready('map', function(map) {
-    // Bind markers reactively to Bathrooms
-    Bathrooms.find().observe({
-      added: function(bathroom) {
-        // Create marker
-        var marker = new google.maps.Marker({
-          animation: google.maps.Animation.DROP,
-          draggable: false,
-          map: map.instance,
-          position: new google.maps.LatLng(
-            bathroom.loc.coordinates[1],
-            bathroom.loc.coordinates[0]
-          ),
-          id: bathroom._id
-        });
+    var destinations = [];
+    Bathrooms.find({}, {limit: 10}).forEach(function(bathroom) {
+      // Create marker
+      var marker = new google.maps.Marker({
+        animation: google.maps.Animation.DROP,
+        draggable: false,
+        map: map.instance,
+        position: new google.maps.LatLng(
+          bathroom.loc.coordinates[1],
+          bathroom.loc.coordinates[0]
+        ),
+        id: bathroom._id
+      });
 
-        // Handle marker hovering
-        google.maps.event.addListener(marker, 'mouseover', function(event) {
-          Session.set('hoveredMarker', bathroom._id);
-        });
-        // Handle marker clicking
-        google.maps.event.addListener(marker, 'click', function(event) {
-          toggleBathroomPanelBody(bathroom._id);
-        });
-      },
-      changed: function(newBathroom, oldBathroom) {
-        markers[newBathroom._id].setPosition({
-          lat: newBathroom.loc.coordinates[1],
-          lng: newBathroom.loc.coordinates[0]
-        });
-      },
-      removed: function(oldBathroom) {
-        // Remove the marker from the map
-        markers[oldBathroom._id].setMap(null);
+      // Handle marker hovering
+      google.maps.event.addListener(marker, 'mouseover', function(event) {
+        Session.set('hoveredMarker', bathroom._id);
+      });
+      // Handle marker clicking
+      google.maps.event.addListener(marker, 'click', function(event) {
+        toggleBathroomPanelBody(bathroom._id);
+      });
 
-        // Clear the event listener
-        google.maps.event.clearInstanceListeners(
-          markers[oldBathroom._id]);
-      }
+      // Add to destinations
+      destinations.push(
+        new google.maps.LatLng(
+          bathroom.loc.coordinates[1],
+          bathroom.loc.coordinates[0])
+      );
+    });
+    var pos = Location.getLastPosition();
+    var origin = new google.maps.LatLng(pos.latitude, pos.longitude);
+    var service = new google.maps.DistanceMatrixService();
+    service.getDistanceMatrix({
+      origins: [origin],
+      destinations: destinations,
+      travelMode: google.maps.TravelMode.WALKING
+    }, function(res) {
+      Session.set("distanceMatrix", res);
+      console.log("Set distanceMatrix", JSON.stringify(res));
     });
   });
 });
