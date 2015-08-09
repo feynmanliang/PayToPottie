@@ -3,6 +3,17 @@ Bathrooms = new Mongo.Collection('bathrooms');
 if (Meteor.isServer) {
   Bathrooms._ensureIndex({"loc.coordinates" : "2d"});
 }
+// TODO: only publish images for current bathroom
+BathroomImages = new FileCollection('bathroomImages', {
+  resumable: true,   // Enable built-in resumable.js upload support
+  http: [{
+    method: 'get',
+    path: '/:md5',  // this will be at route "/gridfs/bathroomImages/:md5"
+    lookup: function (params, query) {  // uses express style url params
+      return { md5: params.md5 };       // a query mapping url to bathroomImages
+    }
+  }]
+});
 
 CRON_INTERVAL = 'every 5 seconds';
 BATHROOM_TIME_SECONDS = 10;
