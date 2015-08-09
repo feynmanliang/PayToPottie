@@ -1,6 +1,7 @@
 <template name="bathroom">
   <div class="row">
-    <div class="description col-lg-12">{{name}}</div>
+    <div class="description col-lg-10">{{name}}</div>
+    <a href="/bathroom/edit/{{_id}}" class="btn btn-warning col-lg-2 editBathroom">Edit</a>
   </div>
   <div class="row">
     <div class="owner col-lg-2">Owner: {{owner}}</div>

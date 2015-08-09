@@ -8,14 +8,19 @@ Template.bathroomCreate.events({
     geocode.geocode({
       address: bathroom.location.value
     }, function(geocodeResult) {
+
+      if(geocodeResult.length === 0) // user didn't input location information
+        return;
+
       var latLng = geocodeResult.shift().geometry.location
-      var bathroomId = Bathrooms.insert({
+      var bathroomToSave = {
         // TODO: GPS coords for bathroom
         // TODO: Photos for bathrooms
         name: bathroom.name.value,
         description: bathroom.description.value,
         price: parseInt(bathroom.price.value),
         owner: owner,
+        address: bathroom.location.value,
         loc: {
           type : "Point",
           coordinates : [
@@ -23,7 +28,13 @@ Template.bathroomCreate.events({
             latLng.G
           ]
         }
-      });
+      }
+      // if window.location is something like /bathroom/edit, then
+      //  update, instead of insert
+      if(window.location.pathname.indexOf('/bathroom/edit') > -1)
+        var bathroomId = Bathrooms.update(bathroomToSave);
+      else
+        var bathroomId = Bathrooms.insert(bathroomToSave);
       Router.go('/bathroom/' + bathroomId);
     });
   }
