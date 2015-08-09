@@ -29,7 +29,7 @@ Template.bathrooms.events({
 })
 
 Template.indBathroom.helpers({
-  hovereMarkerStyle: function() {
+  hoveredMarkerStyle: function() {
     return Session.equals('hoveredMarker', this._id) ? 'active' : '';
   }
 });

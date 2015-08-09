@@ -4,11 +4,13 @@ Template.joinQueue.events({
 
     var queue = Reservations.findOne({bathroomId: this._id, userId: Meteor.userId()});
 
-    // if queue exists, remove it
+    // if reservation exists, remove it
     // otherwise insert new queue
-    console.log("queue", queue);
     if(queue) {
       Reservations.remove(queue._id);
+
+      // Redirect to all bathroom page
+      Router.go('bathrooms');
     } else {
       var result = Reservations.insert({
         userId: Meteor.userId(),
@@ -16,8 +18,10 @@ Template.joinQueue.events({
         bathroomId: this._id,
         status: "Active"
       });
-      console.log("reservation id:", result);
       startBathroomCountdown(this._id);
+
+      // Redirect to bathroom waiting page
+      Router.go('bathroom', {_id: this._id});
     }
   }
 });
