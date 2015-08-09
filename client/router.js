@@ -1,3 +1,7 @@
+Router.configure({
+    layoutTemplate: 'main'
+});
+
 Router.route('/bathroom/edit/:_id', {
   name: 'bathroomCreate',
   template: 'bathroomCreate',
@@ -44,10 +48,6 @@ Router.route('/bathroom', {
     Session.set('bathroomState', "active");
   }
 
-});
-
-Router.configure({
-    layoutTemplate: 'main'
 });
 
 Router.route('/imageUpload',{

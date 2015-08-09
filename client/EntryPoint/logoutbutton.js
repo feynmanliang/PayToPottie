@@ -8,8 +8,6 @@ Template.logoutButton.events({
 
 Template.logoutButton.helpers({
   user: function() {
-    console.log(Meteor.user());
-
     if (Meteor.userId()) {
       return "logout, " + Meteor.user().emails[0].address;
     }
