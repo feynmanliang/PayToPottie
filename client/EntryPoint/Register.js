@@ -12,7 +12,7 @@ Template.register.events({
 
         Meteor.call('createPottyUser',email,password);
         if (Meteor.userId()) {
-          Router.go('/bathrooms');
+          Router.go('/bathroom');
         }
     }
 });

@@ -1,5 +1,3 @@
-//Accounts.config({forbidClientAccountCreation: false});
-
 Meteor.methods({
   'createPottyUser': function(email, password){
     Accounts.createUser({
@@ -8,10 +6,6 @@ Meteor.methods({
                  profile: {
                   owner: false
                  }
-             }
-//             function(error){
-//               throw Error(error);
-//             }
-             );
+             });
   }
 });
