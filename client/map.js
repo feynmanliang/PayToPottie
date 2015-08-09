@@ -21,30 +21,44 @@ Template.map.helpers({
   }
 });
 
-Template.map.onCreated(function() {  
+Template.map.onCreated(function() {
   var self = this;
 
   GoogleMaps.ready('map', function(map) {
-    var marker;
-
-    // Create and move the marker when latLng changes.
-    self.autorun(function() {
-      var lonLats = Bathrooms.find().map(function(elem) {
-        return elem.loc.coordinates;
-      });
-      if (lonLats.length === 0) return;
-
-      // If the marker doesn't yet exist, create it.
-      for (var i=0; i < lonLats.length; i++) {
+    // Bind markers reactively to Bathrooms
+    Bathrooms.find().observe({
+      added: function(bathroom) {
+        // Create marker
         var marker = new google.maps.Marker({
-          position: new google.maps.LatLng(lonLats[i][1], lonLats[i][0]),
-          map: map.instance
+          animation: google.maps.Animation.DROP,
+          draggable: false,
+          map: map.instance,
+          position: new google.maps.LatLng(
+            bathroom.loc.coordinates[1],
+            bathroom.loc.coordinates[0]
+          ),
+          id: bathroom._id
         });
-      }
 
-      // Center and zoom the map view onto the current position.
-      //map.instance.setCenter(marker.getPosition());
-      //map.instance.setZoom(MAP_ZOOM);
+        // Handle marker clicking
+        google.maps.event.addListener(marker, 'click', function(event) {
+          Session.set('selectedMarker', bathroom._id);
+        });
+      },
+      changed: function(newBathroom, oldBathroom) {
+        markers[newBathroom._id].setPosition({
+          lat: newBathroom.loc.coordinates[1],
+          lng: newBathroom.loc.coordinates[0]
+        });
+      },
+      removed: function(oldBathroom) {
+        // Remove the marker from the map
+        markers[oldBathroom._id].setMap(null);
+
+        // Clear the event listener
+        google.maps.event.clearInstanceListeners(
+          markers[oldBathroom._id]);
+      }
     });
   });
 });

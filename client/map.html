@@ -1,4 +1,4 @@
-<template name="map">  
+<template name="map">
   <div class="map-container">
     {{#unless geolocationError}}
       {{> googleMap name="map" options=mapOptions}}
@@ -6,4 +6,4 @@
       Geolocation failed: {{geolocationError}}
     {{/unless}}
   </div>
-</template>  
+</template>
