@@ -48,6 +48,8 @@ Template.bathroomCreate.events({
 
 Template.bathroomCreate.helpers({
   isNew: function(id) {
+    console.log('id');
+    console.log(id);
     return id === null;
   }
 });

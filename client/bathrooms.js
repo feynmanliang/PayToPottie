@@ -16,6 +16,9 @@ Template.bathrooms.helpers({
     } else {
       return Bathrooms.find({}, {limit: 10});
     }
+    console.log('sorted');
+    console.log(sorted);
+
   },
 });
 

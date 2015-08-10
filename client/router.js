@@ -67,15 +67,18 @@ Router.route('/bathroom', {
   name: 'bathrooms',
   template: 'bathrooms',
   onBeforeAction: function() {
-    Location.locate(function(pos) {
+    Location.locate(function(pos){
       GoogleMaps.load();
-    }, function(err) {
+
+    } ,function(err) {
       console.log("Oops! There was an error", err);
     });
     this.next()
   },
   subscriptions: function() {
     var loc = Location.getReactivePosition();
+    console.log('loc');
+    console.log(loc);
 
     return [
       Meteor.subscribe('reservations'),
