@@ -12,7 +12,7 @@ Meteor.startup(function() {
             type : "Point" ,
             coordinates : [lon, lat]
           },
-          $maxDistance: 1000
+          // $maxDistance: 1000
         }
       }
     });

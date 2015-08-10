@@ -4,7 +4,11 @@ Router.configure({
 
 Router.route('/bathroom/new', {
   name: 'bathroom.create',
-  template: 'bathroomCreate'
+  template: 'bathroomCreate',
+  onBeforeAction: function() {
+    GoogleMaps.load();
+    this.next();
+  }
 });
 
 Router.route('/bathroom/edit/:_id', {
@@ -15,6 +19,10 @@ Router.route('/bathroom/edit/:_id', {
   },
   subscriptions: function() {
     return Meteor.subscribe('bathroom', this.params._id);
+  },
+  onBeforeAction: function() {
+    GoogleMaps.load();
+    this.next();
   }
 });
 
@@ -96,10 +104,6 @@ Router.route('/bathroom', {
 
 });
 
-Router.route('/imageUpload',{
-  template: 'imageUpload'
-});
-
 Router.route('/about',{
   template: 'About',
   after: function (){
@@ -118,7 +122,12 @@ Router.route('/profile',{
     Session.set('pottyLogo', "inactive");
     Session.set('logState', "inactive");
     Session.set('bathroomState', "inactive");
+  },
+  subscriptions: function() {
 
+    return [
+      Meteor.subscribe('nearbyBathrooms'),
+    ];
   }
 });
 
@@ -146,4 +155,3 @@ Router.route('/',{
     Session.set('showRegister', false);
   }
 });
-

@@ -57,6 +57,21 @@
         },
         active: false
       });
+      var bathroomId5 = Bathrooms.insert({
+        name: "Parisoma",
+        description: "Meteor Hackathon",
+        price: 999,
+        owner: 2304234,
+        address: "169 11th Street, San Francisco, CA 94103",
+        loc: {
+          type : "Point",
+          coordinates : [
+            -122.415880,
+            37.773624
+          ]
+        },
+        active: true
+      });
     }
     if (Reservations.find().count() === 0) {
       Reservations.insert({

@@ -3,7 +3,11 @@ Template.bathrooms.helpers({
     var distances = Session.get('distanceMatrix');
     if (distances) {
       var bathroomsWithDistances = _.map(distances.bathrooms, function(elem, i) {
-        elem.distance = distances.matrix.rows[0].elements[i].distance.value;
+        if(distances.matrix.rows[0].elements[i].distance === undefined) {
+          elem.distance = 10000;
+        } else {
+          elem.distance = distances.matrix.rows[0].elements[i].distance.value;
+        }
         return elem
       });
       var sorted = _.sortBy(bathroomsWithDistances, function(elem) {
